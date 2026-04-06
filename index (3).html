@@ -1,0 +1,1317 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TRUVARA — Conseil stratégique en achats & supply chain</title>
+  <meta name="description" content="TRUVARA accompagne les directions générales dans la transformation de leurs systèmes achats et supply chain. Gouvernance. Performance. Résilience.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    /* ══════════════════════════════════════════
+       VARIABLES & RESET
+    ══════════════════════════════════════════ */
+    :root {
+      --navy:       #0B1F3A;
+      --navy-deep:  #071528;
+      --navy-light: #112644;
+      --green:      #1FA67A;
+      --green-dark: #178a65;
+      --white:      #ffffff;
+      --text:       rgba(255,255,255,0.82);
+      --muted:      rgba(255,255,255,0.50);
+      --faint:      rgba(255,255,255,0.28);
+      --line:       rgba(255,255,255,0.08);
+      --line-green: rgba(31,166,122,0.22);
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
+      --font-sans:  'DM Sans', system-ui, sans-serif;
+      --container:  min(1080px, calc(100vw - 48px));
+      --radius:     0px; /* rectangular everywhere */
+    }
+
+    *, *::before, *::after {
+      margin: 0; padding: 0;
+      box-sizing: border-box;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--navy-deep);
+      color: var(--white);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+
+    /* ══════════════════════════════════════════
+       LAYOUT
+    ══════════════════════════════════════════ */
+    .container {
+      width: var(--container);
+      margin: 0 auto;
+    }
+
+    section { padding: 96px 0; }
+
+    .section-alt {
+      background: rgba(255,255,255,0.025);
+    }
+
+    /* ══════════════════════════════════════════
+       TYPOGRAPHY
+    ══════════════════════════════════════════ */
+    .serif { font-family: var(--font-serif); }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 20px;
+    }
+    .eyebrow::before {
+      content: '';
+      width: 24px;
+      height: 1px;
+      background: var(--green);
+      opacity: 0.6;
+    }
+
+    h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(48px, 6vw, 86px);
+      font-weight: 300;
+      line-height: 1.03;
+      letter-spacing: -0.02em;
+    }
+    h1 em { font-style: italic; color: var(--green); }
+    h1 .dim { color: var(--text); }
+
+    h2 {
+      font-family: var(--font-serif);
+      font-size: clamp(30px, 3.8vw, 52px);
+      font-weight: 300;
+      line-height: 1.1;
+      letter-spacing: -0.015em;
+      margin-bottom: 18px;
+    }
+    h2 em { font-style: italic; color: var(--green); }
+
+    h3 {
+      font-family: var(--font-sans);
+      font-size: 17px;
+      font-weight: 500;
+      margin-bottom: 10px;
+      letter-spacing: -0.01em;
+    }
+
+    p {
+      font-size: 16px;
+      color: var(--text);
+      line-height: 1.8;
+    }
+
+    .lead {
+      font-size: 18px;
+      color: var(--text);
+      line-height: 1.85;
+      max-width: 580px;
+    }
+
+    /* ══════════════════════════════════════════
+       BUTTONS — rectangulaires
+    ══════════════════════════════════════════ */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      background: var(--green);
+      color: var(--navy-deep);
+      font-family: var(--font-sans);
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      border-radius: var(--radius);
+      transition: background .22s ease, transform .22s ease, box-shadow .22s ease;
+    }
+    .btn:hover {
+      background: var(--green-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(31,166,122,0.22);
+    }
+
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 27px;
+      background: transparent;
+      color: var(--white);
+      font-family: var(--font-sans);
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      transition: border-color .22s ease, transform .22s ease;
+    }
+    .btn-outline:hover {
+      border-color: rgba(255,255,255,0.28);
+      transform: translateY(-2px);
+    }
+
+    /* ══════════════════════════════════════════
+       NAVIGATION
+    ══════════════════════════════════════════ */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      background: rgba(7,21,40,0.92);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--line);
+      transition: box-shadow .3s ease;
+    }
+    header.scrolled {
+      box-shadow: 0 4px 40px rgba(0,0,0,0.35);
+    }
+
+    .nav {
+      width: var(--container);
+      margin: 0 auto;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+    .nav-logo {
+      font-family: var(--font-sans);
+      font-size: 17px;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--white);
+    }
+    .nav-logo-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--green);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+    }
+    .nav-links a {
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      position: relative;
+      transition: color .2s ease;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      left: 0; bottom: -4px;
+      width: 100%; height: 1px;
+      background: var(--green);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .22s ease;
+    }
+    .nav-links a:hover,
+    .nav-links a.active { color: var(--white); }
+    .nav-links a:hover::after,
+    .nav-links a.active::after { transform: scaleX(1); }
+
+    .nav-cta { flex-shrink: 0; }
+
+    /* Mobile burger */
+    .burger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 8px;
+      background: none;
+      border: none;
+    }
+    .burger span {
+      display: block;
+      width: 22px;
+      height: 1.5px;
+      background: var(--white);
+      transition: transform .25s ease, opacity .25s ease;
+    }
+    .burger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .burger.open span:nth-child(2) { opacity: 0; }
+    .burger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      gap: 0;
+      background: var(--navy-deep);
+      border-bottom: 1px solid var(--line);
+      padding: 0;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .35s ease, padding .35s ease;
+    }
+    .mobile-menu.open {
+      max-height: 400px;
+      padding: 20px 0;
+    }
+    .mobile-menu a {
+      display: block;
+      padding: 14px 24px;
+      font-size: 14px;
+      color: var(--text);
+      border-bottom: 1px solid var(--line);
+      transition: color .2s ease;
+    }
+    .mobile-menu a:hover { color: var(--white); }
+    .mobile-menu .btn {
+      margin: 16px 24px 0;
+      justify-content: center;
+    }
+
+    /* ══════════════════════════════════════════
+       HERO
+    ══════════════════════════════════════════ */
+    #accueil {
+      padding: 120px 0 96px;
+      position: relative;
+      overflow: hidden;
+    }
+    #accueil::before {
+      content: '';
+      position: absolute;
+      top: -100px; right: -200px;
+      width: 600px; height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(31,166,122,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 64px;
+      align-items: start;
+    }
+
+    .hero-copy { position: relative; }
+
+    .hero-copy h1 { margin-bottom: 28px; }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 36px;
+    }
+
+    /* Stats bar */
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border: 1px solid var(--line);
+      margin-top: 60px;
+    }
+    .stat {
+      padding: 22px 20px;
+      border-right: 1px solid var(--line);
+    }
+    .stat:last-child { border-right: none; }
+    .stat-val {
+      font-family: var(--font-serif);
+      font-size: 40px;
+      font-weight: 300;
+      line-height: 1;
+      color: var(--white);
+    }
+    .stat-label {
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 6px;
+    }
+
+    /* Hero aside card */
+    .hero-card {
+      border: 1px solid var(--line);
+      padding: 30px;
+      position: relative;
+    }
+    .hero-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--green), transparent);
+    }
+    .hero-card .card-tag {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--green);
+      display: block;
+      margin-bottom: 16px;
+    }
+    .hero-card h3 {
+      font-family: var(--font-serif);
+      font-size: 22px;
+      font-weight: 400;
+      line-height: 1.3;
+      margin-bottom: 14px;
+    }
+    .hero-card p { font-size: 14px; }
+
+    .bullet-list {
+      margin-top: 18px;
+      display: grid;
+      gap: 10px;
+    }
+    .bullet {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      font-size: 13px;
+      color: var(--text);
+      line-height: 1.55;
+    }
+    .bullet::before {
+      content: '';
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--green);
+      flex-shrink: 0;
+      margin-top: 7px;
+      opacity: 0.8;
+    }
+
+    /* Trust strip */
+    .trust-strip {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      padding: 22px 0;
+    }
+    .trust-inner {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      flex-wrap: wrap;
+    }
+    .trust-label {
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--faint);
+      flex-shrink: 0;
+    }
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .tag {
+      padding: 7px 13px;
+      border: 1px solid var(--line);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      transition: border-color .2s ease, color .2s ease;
+    }
+    .tag:hover {
+      border-color: var(--line-green);
+      color: var(--green);
+    }
+
+    /* ══════════════════════════════════════════
+       SECTION HEADER (reusable)
+    ══════════════════════════════════════════ */
+    .sec-head {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: end;
+      margin-bottom: 56px;
+    }
+    .sec-head p { font-size: 15px; }
+
+    .accent-line {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(31,166,122,0.4), transparent 50%);
+      margin-bottom: 56px;
+    }
+
+    /* ══════════════════════════════════════════
+       EXPERTISES
+    ══════════════════════════════════════════ */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2px;
+      background: var(--line);
+    }
+    .service-card {
+      background: var(--navy-deep);
+      padding: 36px;
+      position: relative;
+      overflow: hidden;
+      transition: background .25s ease;
+    }
+    .service-card:hover {
+      background: var(--navy-light);
+    }
+    .service-card::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: var(--green);
+      opacity: 0;
+      transition: opacity .25s ease;
+    }
+    .service-card:hover::after { opacity: 1; }
+
+    .service-num {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 18px;
+      display: block;
+    }
+    .service-card h3 {
+      font-family: var(--font-serif);
+      font-size: 24px;
+      font-weight: 400;
+      line-height: 1.2;
+      margin-bottom: 14px;
+    }
+    .service-card p { font-size: 14px; }
+
+    .service-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 22px;
+    }
+    .service-tags span {
+      padding: 5px 10px;
+      border: 1px solid var(--line);
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--faint);
+    }
+
+    /* ══════════════════════════════════════════
+       APPROCHE
+    ══════════════════════════════════════════ */
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+      background: var(--line);
+    }
+    .step {
+      background: var(--navy-deep);
+      padding: 30px 26px 34px;
+      position: relative;
+      transition: background .25s ease;
+    }
+    .step:hover { background: var(--navy-light); }
+
+    .step-num {
+      font-family: var(--font-serif);
+      font-size: 52px;
+      font-weight: 300;
+      color: rgba(31,166,122,0.12);
+      line-height: 1;
+      position: absolute;
+      top: 16px; right: 16px;
+    }
+    .step-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px; height: 32px;
+      border: 1px solid var(--line-green);
+      color: var(--green);
+      font-size: 11px;
+      font-weight: 500;
+      margin-bottom: 20px;
+    }
+    .step h3 {
+      font-family: var(--font-serif);
+      font-size: 26px;
+      font-weight: 400;
+      letter-spacing: -0.01em;
+      margin-bottom: 12px;
+    }
+    .step p { font-size: 13px; line-height: 1.75; }
+    .step-footer {
+      margin-top: 18px;
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--green);
+    }
+
+    /* Principes */
+    .principles-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2px;
+      background: var(--line);
+      margin-top: 48px;
+    }
+    .principle {
+      background: rgba(255,255,255,0.02);
+      padding: 30px;
+    }
+    .principle h3 { font-size: 16px; margin-bottom: 10px; }
+    .principle p { font-size: 14px; }
+
+    /* ══════════════════════════════════════════
+       INSIGHTS
+    ══════════════════════════════════════════ */
+    .insights-list { display: grid; gap: 0; }
+
+    .insight-row {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 48px;
+      align-items: start;
+      padding: 36px 0;
+      border-top: 1px solid var(--line);
+      transition: background .2s ease;
+    }
+    .insight-row:hover { background: rgba(255,255,255,0.02); }
+    .insight-row:last-child { border-bottom: 1px solid var(--line); }
+
+    .insight-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .insight-cat {
+      display: inline-block;
+      padding: 4px 10px;
+      border: 1px solid var(--line-green);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--green);
+    }
+    .insight-date {
+      font-size: 12px;
+      color: var(--faint);
+      letter-spacing: 0.08em;
+    }
+    .insight-body h3 {
+      font-family: var(--font-serif);
+      font-size: 22px;
+      font-weight: 400;
+      line-height: 1.3;
+      margin-bottom: 10px;
+      transition: color .2s ease;
+    }
+    .insight-row:hover .insight-body h3 { color: var(--text); }
+    .insight-body p { font-size: 14px; line-height: 1.75; }
+
+    .insights-note {
+      margin-top: 40px;
+      padding: 24px 28px;
+      border: 1px solid var(--line);
+      border-left: 2px solid var(--green);
+    }
+    .insights-note p {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    /* ══════════════════════════════════════════
+       CONTACT
+    ══════════════════════════════════════════ */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .contact-info .email-link {
+      display: block;
+      font-family: var(--font-serif);
+      font-size: 28px;
+      font-weight: 300;
+      color: var(--green);
+      margin: 20px 0 28px;
+      transition: opacity .2s ease;
+    }
+    .contact-info .email-link:hover { opacity: 0.75; }
+
+    .contact-meta {
+      margin-top: 36px;
+      padding-top: 28px;
+      border-top: 1px solid var(--line);
+    }
+    .contact-meta p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 2;
+    }
+
+    /* Form */
+    .form-group { margin-bottom: 20px; }
+    .form-group label {
+      display: block;
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--faint);
+      margin-bottom: 8px;
+    }
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--line);
+      color: var(--white);
+      padding: 13px 15px;
+      font-size: 15px;
+      font-family: var(--font-sans);
+      border-radius: var(--radius);
+      outline: none;
+      transition: border-color .2s ease, background .2s ease;
+      -webkit-appearance: none;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: rgba(31,166,122,0.45);
+      background: rgba(255,255,255,0.06);
+    }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: var(--faint); }
+    .form-group select option { background: var(--navy); }
+    .form-group textarea { height: 110px; resize: vertical; }
+
+    .form-submit {
+      width: 100%;
+      background: var(--green);
+      color: var(--navy-deep);
+      border: none;
+      padding: 15px;
+      font-family: var(--font-sans);
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: background .22s ease, transform .22s ease;
+    }
+    .form-submit:hover {
+      background: var(--green-dark);
+      transform: translateY(-2px);
+    }
+    .form-note {
+      font-size: 12px;
+      color: var(--faint);
+      text-align: center;
+      margin-top: 12px;
+    }
+
+    /* ══════════════════════════════════════════
+       FOOTER
+    ══════════════════════════════════════════ */
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 36px 0;
+    }
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .footer-brand {
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+    .footer-brand span {
+      color: var(--green);
+      margin-left: 6px;
+    }
+    .footer-info {
+      font-size: 12px;
+      color: var(--faint);
+      text-align: right;
+      line-height: 1.9;
+    }
+    .footer-info a {
+      color: var(--green);
+      transition: opacity .2s ease;
+    }
+    .footer-info a:hover { opacity: 0.75; }
+
+    /* ══════════════════════════════════════════
+       ANIMATIONS
+    ══════════════════════════════════════════ */
+    .fade {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+    .fade.in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ══════════════════════════════════════════
+       RESPONSIVE
+    ══════════════════════════════════════════ */
+    @media (max-width: 960px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero-card { display: none; } /* simplify on tablet */
+      .sec-head { grid-template-columns: 1fr; gap: 16px; }
+      .steps-grid { grid-template-columns: repeat(2, 1fr); }
+      .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+    }
+
+    @media (max-width: 768px) {
+      :root { --container: calc(100vw - 32px); }
+      section { padding: 64px 0; }
+      .nav-links, .nav-cta { display: none; }
+      .burger { display: flex; }
+      .services-grid { grid-template-columns: 1fr; }
+      .steps-grid { grid-template-columns: 1fr; }
+      .principles-grid { grid-template-columns: 1fr; }
+      .hero-stats { grid-template-columns: 1fr 1fr; }
+      .insight-row { grid-template-columns: 1fr; gap: 12px; padding: 24px 0; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+      .footer-info { text-align: left; }
+    }
+
+    @media (max-width: 480px) {
+      h1 { font-size: clamp(36px, 11vw, 52px); }
+      .hero-stats { grid-template-columns: 1fr; }
+      .hero-actions { flex-direction: column; }
+      .hero-actions .btn,
+      .hero-actions .btn-outline { justify-content: center; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ═══════════════════════════════════════
+       NAVIGATION
+  ═══════════════════════════════════════ -->
+  <header id="site-header">
+    <div class="nav">
+      <a href="#accueil" class="nav-brand">
+        <div class="nav-logo-dot"></div>
+        <span class="nav-logo">TRUVARA</span>
+      </a>
+
+      <div class="nav-links">
+        <a href="#expertises">Expertises</a>
+        <a href="#approche">Approche</a>
+        <a href="#insights">Insights</a>
+        <a href="#contact">Contact</a>
+      </div>
+
+      <div class="nav-cta">
+        <a href="#contact" class="btn">Prendre contact</a>
+      </div>
+
+      <button class="burger" id="burger" aria-label="Menu mobile">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="#expertises">Expertises</a>
+    <a href="#approche">Approche</a>
+    <a href="#insights">Insights</a>
+    <a href="#contact">Contact</a>
+    <a href="#contact" class="btn">Prendre contact</a>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════
+       HERO — ACCUEIL
+  ═══════════════════════════════════════ -->
+  <section id="accueil">
+    <div class="container">
+      <div class="hero-grid">
+
+        <div class="hero-copy">
+          <div class="eyebrow fade">Trusted Intelligence. Global Procurement.</div>
+          <h1 class="fade">
+            Structurer des systèmes achats<br>
+            à <em>haute exigence</em><br>
+            <span class="dim">stratégique.</span>
+          </h1>
+          <p class="lead fade">
+            TRUVARA accompagne les directions générales, achats et supply chain
+            qui veulent passer d'une fonction de pilotage des coûts à une architecture
+            de performance, de résilience et de confiance.
+          </p>
+          <div class="hero-actions fade">
+            <a href="#contact" class="btn">Entrer en discussion</a>
+            <a href="#expertises" class="btn-outline">Découvrir les expertises</a>
+          </div>
+
+          <div class="hero-stats fade">
+            <div class="stat">
+              <div class="stat-val">−20%</div>
+              <div class="stat-label">Réduction coûts achats</div>
+            </div>
+            <div class="stat">
+              <div class="stat-val">+30%</div>
+              <div class="stat-label">Visibilité sur les flux</div>
+            </div>
+            <div class="stat">
+              <div class="stat-val">360°</div>
+              <div class="stat-label">Contrôle & conformité</div>
+            </div>
+          </div>
+        </div>
+
+        <aside>
+          <div class="hero-card fade">
+            <span class="card-tag">Ce qui nous distingue</span>
+            <h3>Une maison de conseil pensée pour les organisations complexes.</h3>
+            <p>TRUVARA relie stratégie achats, transformation opérationnelle, intelligence artificielle, blockchain et gouvernance de confiance dans une seule proposition de valeur.</p>
+            <div class="bullet-list">
+              <div class="bullet">Positionnement international — groupes multi-entités et multi-sites.</div>
+              <div class="bullet">Lecture direction générale, sans jargon technologique inutile.</div>
+              <div class="bullet">Approche orientée décision, exécution et preuves de valeur.</div>
+            </div>
+          </div>
+        </aside>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust strip -->
+  <div class="trust-strip">
+    <div class="container">
+      <div class="trust-inner fade">
+        <span class="trust-label">Domaines</span>
+        <div class="tags">
+          <span class="tag">Stratégie achats</span>
+          <span class="tag">Supply chain</span>
+          <span class="tag">IA appliquée</span>
+          <span class="tag">Blockchain & traçabilité</span>
+          <span class="tag">CSRD · CSDDD</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════
+       EXPERTISES
+  ═══════════════════════════════════════ -->
+  <section id="expertises" class="section-alt">
+    <div class="container">
+
+      <div class="sec-head fade">
+        <div>
+          <div class="eyebrow">Expertises</div>
+          <h2>Des interventions conçues pour créer de la valeur.</h2>
+        </div>
+        <p>Chaque domaine est formulé comme un mandat de transformation. L'objectif est de montrer à un décideur où TRUVARA peut prendre la main, structurer une trajectoire et produire des résultats tangibles.</p>
+      </div>
+
+      <div class="accent-line"></div>
+
+      <div class="services-grid">
+
+        <div class="service-card fade">
+          <span class="service-num">01 · Stratégie achats</span>
+          <h3>Redéfinir le rôle des achats dans la création de valeur.</h3>
+          <p>Diagnostic de maturité, segmentation des dépenses, recalibrage des priorités, design du modèle opératoire et feuille de route de transformation portée au bon niveau de gouvernance.</p>
+          <div class="service-tags">
+            <span>Roadmap</span><span>Operating model</span><span>Value capture</span>
+          </div>
+        </div>
+
+        <div class="service-card fade">
+          <span class="service-num">02 · IA appliquée</span>
+          <h3>Augmenter la décision et l'exécution par l'intelligence artificielle.</h3>
+          <p>Cas d'usage prioritaires, automatisation ciblée, prédiction, aide à la décision, contrôle documentaire et exploitation avancée de la donnée achats dans une logique strictement métier.</p>
+          <div class="service-tags">
+            <span>Automation</span><span>Predictive analytics</span><span>Decision support</span>
+          </div>
+        </div>
+
+        <div class="service-card fade">
+          <span class="service-num">03 · Traçabilité & confiance</span>
+          <h3>Installer des architectures de confiance sur la chaîne de valeur.</h3>
+          <p>Blockchain, provenance, auditabilité, gouvernance des preuves, conformité fournisseurs et sécurisation des flux critiques dans des environnements réglementés et multi-pays.</p>
+          <div class="service-tags">
+            <span>Blockchain</span><span>Traceability</span><span>CSRD · CSDDD</span>
+          </div>
+        </div>
+
+        <div class="service-card fade">
+          <span class="service-num">04 · Transformation bout en bout</span>
+          <h3>Passer d'une ambition stratégique à une exécution visible sur le terrain.</h3>
+          <p>Program management, conduite du changement, pilotage de la performance, alignement des équipes et mise en mouvement des fonctions achats, opérations, finance et juridique.</p>
+          <div class="service-tags">
+            <span>Change</span><span>Program office</span><span>Execution</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════
+       APPROCHE
+  ═══════════════════════════════════════ -->
+  <section id="approche">
+    <div class="container">
+
+      <div class="sec-head fade">
+        <div>
+          <div class="eyebrow">Approche</div>
+          <h2>Une méthode sobre, exigeante, <em>calibrée</em>.</h2>
+        </div>
+        <p>Chaque intervention est conçue sur mesure, alignée avec les enjeux de direction générale et les contraintes opérationnelles réelles. Une séquence de travail rigoureuse, adaptée à votre contexte.</p>
+      </div>
+
+      <div class="accent-line"></div>
+
+      <div class="steps-grid">
+
+        <div class="step fade">
+          <div class="step-num">01</div>
+          <div class="step-badge">01</div>
+          <h3>Cadrer</h3>
+          <p>Clarifier les priorités de performance, les contraintes opérationnelles, le niveau d'ambition et les décisions à mettre sous contrôle dès les premières semaines.</p>
+          <div class="step-footer">Priorités · gouvernance · valeur</div>
+        </div>
+
+        <div class="step fade">
+          <div class="step-num">02</div>
+          <div class="step-badge">02</div>
+          <h3>Diagnostiquer</h3>
+          <p>Lire les flux, la base fournisseurs, les risques, la maturité des équipes et l'architecture de données pour objectiver les leviers de transformation.</p>
+          <div class="step-footer">Risques · données · maturité</div>
+        </div>
+
+        <div class="step fade">
+          <div class="step-num">03</div>
+          <div class="step-badge">03</div>
+          <h3>Concevoir</h3>
+          <p>Définir le modèle cible, les cas d'usage, l'organisation de pilotage, la trajectoire technologique et les gains attendus avec un séquencement réaliste.</p>
+          <div class="step-footer">Target model · use cases · roadmap</div>
+        </div>
+
+        <div class="step fade">
+          <div class="step-num">04</div>
+          <div class="step-badge">04</div>
+          <h3>Déployer</h3>
+          <p>Mettre en œuvre, embarquer les équipes, sécuriser les arbitrages, mesurer la valeur et installer une dynamique d'amélioration continue.</p>
+          <div class="step-footer">Execution · adoption · performance</div>
+        </div>
+
+      </div>
+
+      <div class="principles-grid">
+        <div class="principle fade">
+          <h3>Exigence analytique</h3>
+          <p>Chaque recommandation repose sur une lecture rigoureuse des données et des contraintes réelles — pas sur des modèles génériques.</p>
+        </div>
+        <div class="principle fade">
+          <h3>Langage de direction</h3>
+          <p>Les livrables sont conçus pour être compris et portés au niveau d'un comité exécutif, sans traduction intermédiaire.</p>
+        </div>
+        <div class="principle fade">
+          <h3>Discrétion absolue</h3>
+          <p>La confidentialité est un prérequis. Chaque engagement est traité avec la rigueur attendue d'un partenaire stratégique.</p>
+        </div>
+        <div class="principle fade">
+          <h3>Résultats mesurables</h3>
+          <p>L'ambition de chaque mission est traduite en indicateurs concrets, suivis et documentés dans le temps.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════
+       INSIGHTS
+  ═══════════════════════════════════════ -->
+  <section id="insights" class="section-alt">
+    <div class="container">
+
+      <div class="sec-head fade">
+        <div>
+          <div class="eyebrow">Insights</div>
+          <h2>Une maison de pensée autant que d'exécution.</h2>
+        </div>
+        <p>Points de vue sur les transformations achats & supply chain, l'IA appliquée, la réglementation et la gouvernance des organisations complexes.</p>
+      </div>
+
+      <div class="accent-line"></div>
+
+      <div class="insights-list">
+
+        <div class="insight-row fade">
+          <div class="insight-meta">
+            <span class="insight-cat">Réglementation</span>
+            <span class="insight-date">2026</span>
+          </div>
+          <div class="insight-body">
+            <h3>CSRD & CSDDD : ce que les directions achats doivent anticiper dès maintenant.</h3>
+            <p>Les nouvelles obligations de diligence raisonnable redéfinissent le périmètre de responsabilité des fonctions achats. Ce n'est plus un sujet RSE — c'est un sujet de gouvernance et de risque opérationnel.</p>
+          </div>
+        </div>
+
+        <div class="insight-row fade">
+          <div class="insight-meta">
+            <span class="insight-cat">IA appliquée</span>
+            <span class="insight-date">2026</span>
+          </div>
+          <div class="insight-body">
+            <h3>L'IA dans les achats : entre promesse technologique et réalité d'exécution.</h3>
+            <p>La majorité des projets d'IA dans les fonctions achats échouent non pas par manque de technologie, mais par manque de cas d'usage bien définis et de données fiables.</p>
+          </div>
+        </div>
+
+        <div class="insight-row fade">
+          <div class="insight-meta">
+            <span class="insight-cat">Stratégie</span>
+            <span class="insight-date">2025</span>
+          </div>
+          <div class="insight-body">
+            <h3>Pourquoi la fonction achats reste mal positionnée dans trop d'organisations.</h3>
+            <p>Le problème n'est pas opérationnel — il est politique. La direction achats souffre d'un déficit de légitimité au niveau où les décisions se prennent.</p>
+          </div>
+        </div>
+
+        <div class="insight-row fade">
+          <div class="insight-meta">
+            <span class="insight-cat">Blockchain</span>
+            <span class="insight-date">2025</span>
+          </div>
+          <div class="insight-body">
+            <h3>Blockchain & traçabilité : sortir du buzzword pour passer à l'architecture.</h3>
+            <p>La blockchain n'est pas une solution à un problème indéfini. C'est un outil puissant quand le problème est bien cadré : preuve d'origine, intégrité des données fournisseurs, auditabilité multi-acteurs.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="insights-note fade">
+        <p>La bibliothèque d'insights TRUVARA est en cours de constitution. De nouveaux contenus seront publiés régulièrement.</p>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════
+       CONTACT
+  ═══════════════════════════════════════ -->
+  <section id="contact">
+    <div class="container">
+
+      <div class="sec-head fade">
+        <div>
+          <div class="eyebrow">Contact</div>
+          <h2>Lancer une conversation de direction.</h2>
+        </div>
+        <p>Échanges confidentiels — approche sélective. TRUVARA intervient auprès de dirigeants et d'équipes qui recherchent un partenaire stratégique rigoureux.</p>
+      </div>
+
+      <div class="accent-line"></div>
+
+      <div class="contact-grid">
+
+        <!-- Info -->
+        <div class="fade">
+          <p style="font-size:14px; color:var(--muted);">Adresse email</p>
+          <a href="mailto:contact@truvara.io" class="email-link">contact@truvara.io</a>
+          <p style="font-size:15px;">Pour toute demande de collaboration, échange exploratoire ou question sur les expertises TRUVARA.</p>
+
+          <div class="contact-meta">
+            <p>
+              TRUVARA<br>
+              SIREN 521 665 869<br>
+              © 2026 — Tous droits réservés
+            </p>
+          </div>
+        </div>
+
+        <!-- Formulaire -->
+        <div class="fade">
+          <form action="mailto:contact@truvara.io" method="post" enctype="text/plain">
+
+            <div class="form-group">
+              <label for="name">Nom & prénom</label>
+              <input type="text" id="name" name="name" placeholder="Votre nom" required>
+            </div>
+
+            <div class="form-group">
+              <label for="org">Organisation</label>
+              <input type="text" id="org" name="org" placeholder="Entreprise ou institution">
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email professionnel</label>
+              <input type="email" id="email" name="email" placeholder="vous@entreprise.com" required>
+            </div>
+
+            <div class="form-group">
+              <label for="sujet">Sujet</label>
+              <select id="sujet" name="sujet">
+                <option value="">Sélectionner un sujet</option>
+                <option>Stratégie achats</option>
+                <option>IA appliquée</option>
+                <option>Traçabilité & confiance</option>
+                <option>Transformation</option>
+                <option>Autre</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" placeholder="Décrivez brièvement votre contexte…"></textarea>
+            </div>
+
+            <button type="submit" class="form-submit">Envoyer le message</button>
+            <p class="form-note">Vos données ne sont pas stockées. Réponse sous 48h ouvrées.</p>
+
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════ -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          TRUVARA<span>·</span>
+        </div>
+        <div class="footer-info">
+          <a href="mailto:contact@truvara.io">contact@truvara.io</a><br>
+          SIREN 521 665 869 — © 2026 TRUVARA. Tous droits réservés.
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ═══════════════════════════════════════
+       JAVASCRIPT
+  ═══════════════════════════════════════ -->
+  <script>
+    // 1. Fade-in au scroll
+    const fades = document.querySelectorAll('.fade');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+    fades.forEach(el => io.observe(el));
+
+    // 2. Header shadow on scroll
+    const hdr = document.getElementById('site-header');
+    window.addEventListener('scroll', () => {
+      hdr.classList.toggle('scrolled', window.scrollY > 30);
+    }, { passive: true });
+
+    // 3. Active nav link
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-links a');
+    const ioNav = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          navLinks.forEach(a => a.classList.remove('active'));
+          const link = document.querySelector(`.nav-links a[href="#${e.target.id}"]`);
+          if (link) link.classList.add('active');
+        }
+      });
+    }, { threshold: 0.4 });
+    sections.forEach(s => ioNav.observe(s));
+
+    // 4. Mobile menu
+    const burger = document.getElementById('burger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    burger.addEventListener('click', () => {
+      burger.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+    });
+    // Fermer le menu au clic sur un lien
+    mobileMenu.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        burger.classList.remove('open');
+        mobileMenu.classList.remove('open');
+      });
+    });
+  </script>
+
+</body>
+</html>
