@@ -762,12 +762,9 @@
     /* ══════════════════════════════════════════
        ANIMATIONS
     ══════════════════════════════════════════ */
-    .fade {
-      opacity: 0;
-      transform: translateY(18px);
-      transition: opacity .7s ease, transform .7s ease;
-    }
-    .fade.in { opacity: 1; transform: translateY(0); }
+    /* Animations désactivées — contenu toujours visible */
+    .fade { opacity: 1; transform: none; }
+    .fade.in { opacity: 1; transform: none; }
 
     /* ══════════════════════════════════════════
        RESPONSIVE
@@ -814,10 +811,7 @@
 
       <!-- Logo haut gauche -->
       <a href="#accueil" class="nav-brand" aria-label="TRUVARA — Retour à l'accueil">
-        <img src="./assetslogo.png" alt="TRUVARA">
-      </a>
-
-      <div class="nav-links">
+        <img src="assetslogo.png" alt="TRUVARA">
         <a href="#expertises">Expertises</a>
         <a href="#approche">Approche</a>
         <a href="#insights">Insights</a>
@@ -1185,7 +1179,7 @@
 
         <!-- Logo footer -->
         <a href="#accueil" class="footer-logo" aria-label="TRUVARA">
-          <img src="./assetslogo.png" alt="TRUVARA">
+          <img src="assetslogo.png" alt="TRUVARA">
         </a>
 
         <!-- Social Media Links -->
