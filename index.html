@@ -28,16 +28,10 @@
       --font-serif: 'Cormorant Garamond', Georgia, serif;
       --font-sans:  'DM Sans', system-ui, sans-serif;
       --container:  min(1080px, calc(100vw - 48px));
-      --radius:     0px; /* rectangular everywhere */
+      --radius:     0px;
     }
-
-    *, *::before, *::after {
-      margin: 0; padding: 0;
-      box-sizing: border-box;
-    }
-
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
     html { scroll-behavior: smooth; }
-
     body {
       font-family: var(--font-sans);
       background: var(--navy-deep);
@@ -46,29 +40,19 @@
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
     }
-
     a { color: inherit; text-decoration: none; }
     img { display: block; max-width: 100%; }
 
     /* ══════════════════════════════════════════
        LAYOUT
     ══════════════════════════════════════════ */
-    .container {
-      width: var(--container);
-      margin: 0 auto;
-    }
-
+    .container { width: var(--container); margin: 0 auto; }
     section { padding: 96px 0; }
-
-    .section-alt {
-      background: rgba(255,255,255,0.025);
-    }
+    .section-alt { background: rgba(255,255,255,0.025); }
 
     /* ══════════════════════════════════════════
        TYPOGRAPHY
     ══════════════════════════════════════════ */
-    .serif { font-family: var(--font-serif); }
-
     .eyebrow {
       display: inline-flex;
       align-items: center;
@@ -82,12 +66,10 @@
     }
     .eyebrow::before {
       content: '';
-      width: 24px;
-      height: 1px;
+      width: 24px; height: 1px;
       background: var(--green);
       opacity: 0.6;
     }
-
     h1 {
       font-family: var(--font-serif);
       font-size: clamp(48px, 6vw, 86px);
@@ -97,7 +79,6 @@
     }
     h1 em { font-style: italic; color: var(--green); }
     h1 .dim { color: var(--text); }
-
     h2 {
       font-family: var(--font-serif);
       font-size: clamp(30px, 3.8vw, 52px);
@@ -107,7 +88,6 @@
       margin-bottom: 18px;
     }
     h2 em { font-style: italic; color: var(--green); }
-
     h3 {
       font-family: var(--font-sans);
       font-size: 17px;
@@ -115,22 +95,11 @@
       margin-bottom: 10px;
       letter-spacing: -0.01em;
     }
-
-    p {
-      font-size: 16px;
-      color: var(--text);
-      line-height: 1.8;
-    }
-
-    .lead {
-      font-size: 18px;
-      color: var(--text);
-      line-height: 1.85;
-      max-width: 580px;
-    }
+    p { font-size: 16px; color: var(--text); line-height: 1.8; }
+    .lead { font-size: 18px; color: var(--text); line-height: 1.85; max-width: 580px; }
 
     /* ══════════════════════════════════════════
-       BUTTONS — rectangulaires
+       BUTTONS
     ══════════════════════════════════════════ */
     .btn {
       display: inline-flex;
@@ -152,7 +121,6 @@
       transform: translateY(-2px);
       box-shadow: 0 8px 24px rgba(31,166,122,0.22);
     }
-
     .btn-outline {
       display: inline-flex;
       align-items: center;
@@ -187,9 +155,7 @@
       border-bottom: 1px solid var(--line);
       transition: box-shadow .3s ease;
     }
-    header.scrolled {
-      box-shadow: 0 4px 40px rgba(0,0,0,0.35);
-    }
+    header.scrolled { box-shadow: 0 4px 40px rgba(0,0,0,0.35); }
 
     .nav {
       width: var(--container);
@@ -201,33 +167,18 @@
       gap: 24px;
     }
 
-    .nav-brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex-shrink: 0;
+    /* Logo dans la nav */
+    .nav-brand { display: flex; align-items: center; flex-shrink: 0; }
+    .nav-brand img {
+      height: 34px;
+      width: auto;
+      /* Inverse les couleurs pour fond blanc → blanc sur fond sombre */
+      filter: brightness(0) invert(1);
+      transition: opacity .2s ease;
     }
-    .nav-logo {
-      font-family: var(--font-sans);
-      font-size: 17px;
-      font-weight: 500;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--white);
-    }
-    .nav-logo-dot {
-      width: 6px;
-      height: 6px;
-      background: var(--green);
-      border-radius: 50%;
-      flex-shrink: 0;
-    }
+    .nav-brand img:hover { opacity: 0.85; }
 
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 36px;
-    }
+    .nav-links { display: flex; align-items: center; gap: 36px; }
     .nav-links a {
       font-size: 13px;
       font-weight: 400;
@@ -253,7 +204,7 @@
 
     .nav-cta { flex-shrink: 0; }
 
-    /* Mobile burger */
+    /* Burger mobile */
     .burger {
       display: none;
       flex-direction: column;
@@ -265,8 +216,7 @@
     }
     .burger span {
       display: block;
-      width: 22px;
-      height: 1.5px;
+      width: 22px; height: 1.5px;
       background: var(--white);
       transition: transform .25s ease, opacity .25s ease;
     }
@@ -277,18 +227,13 @@
     .mobile-menu {
       display: none;
       flex-direction: column;
-      gap: 0;
       background: var(--navy-deep);
       border-bottom: 1px solid var(--line);
-      padding: 0;
       max-height: 0;
       overflow: hidden;
       transition: max-height .35s ease, padding .35s ease;
     }
-    .mobile-menu.open {
-      max-height: 400px;
-      padding: 20px 0;
-    }
+    .mobile-menu.open { max-height: 400px; padding: 20px 0; }
     .mobile-menu a {
       display: block;
       padding: 14px 24px;
@@ -298,10 +243,7 @@
       transition: color .2s ease;
     }
     .mobile-menu a:hover { color: var(--white); }
-    .mobile-menu .btn {
-      margin: 16px 24px 0;
-      justify-content: center;
-    }
+    .mobile-menu .btn { margin: 16px 24px 0; justify-content: center; }
 
     /* ══════════════════════════════════════════
        HERO
@@ -320,36 +262,23 @@
       background: radial-gradient(circle, rgba(31,166,122,0.07) 0%, transparent 70%);
       pointer-events: none;
     }
-
     .hero-grid {
       display: grid;
       grid-template-columns: 1fr 320px;
       gap: 64px;
       align-items: start;
     }
-
     .hero-copy { position: relative; }
-
     .hero-copy h1 { margin-bottom: 28px; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 36px; }
 
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 36px;
-    }
-
-    /* Stats bar */
     .hero-stats {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       border: 1px solid var(--line);
       margin-top: 60px;
     }
-    .stat {
-      padding: 22px 20px;
-      border-right: 1px solid var(--line);
-    }
+    .stat { padding: 22px 20px; border-right: 1px solid var(--line); }
     .stat:last-child { border-right: none; }
     .stat-val {
       font-family: var(--font-serif);
@@ -366,7 +295,6 @@
       margin-top: 6px;
     }
 
-    /* Hero aside card */
     .hero-card {
       border: 1px solid var(--line);
       padding: 30px;
@@ -396,11 +324,7 @@
     }
     .hero-card p { font-size: 14px; }
 
-    .bullet-list {
-      margin-top: 18px;
-      display: grid;
-      gap: 10px;
-    }
+    .bullet-list { margin-top: 18px; display: grid; gap: 10px; }
     .bullet {
       display: flex;
       gap: 10px;
@@ -411,8 +335,7 @@
     }
     .bullet::before {
       content: '';
-      width: 5px;
-      height: 5px;
+      width: 5px; height: 5px;
       border-radius: 50%;
       background: var(--green);
       flex-shrink: 0;
@@ -421,29 +344,10 @@
     }
 
     /* Trust strip */
-    .trust-strip {
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-      padding: 22px 0;
-    }
-    .trust-inner {
-      display: flex;
-      align-items: center;
-      gap: 28px;
-      flex-wrap: wrap;
-    }
-    .trust-label {
-      font-size: 11px;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--faint);
-      flex-shrink: 0;
-    }
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
+    .trust-strip { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 22px 0; }
+    .trust-inner { display: flex; align-items: center; gap: 28px; flex-wrap: wrap; }
+    .trust-label { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--faint); flex-shrink: 0; }
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; }
     .tag {
       padding: 7px 13px;
       border: 1px solid var(--line);
@@ -453,13 +357,10 @@
       color: var(--muted);
       transition: border-color .2s ease, color .2s ease;
     }
-    .tag:hover {
-      border-color: var(--line-green);
-      color: var(--green);
-    }
+    .tag:hover { border-color: var(--line-green); color: var(--green); }
 
     /* ══════════════════════════════════════════
-       SECTION HEADER (reusable)
+       SECTION HEADER
     ══════════════════════════════════════════ */
     .sec-head {
       display: grid;
@@ -469,10 +370,8 @@
       margin-bottom: 56px;
     }
     .sec-head p { font-size: 15px; }
-
     .accent-line {
-      width: 100%;
-      height: 1px;
+      width: 100%; height: 1px;
       background: linear-gradient(90deg, rgba(31,166,122,0.4), transparent 50%);
       margin-bottom: 56px;
     }
@@ -493,9 +392,7 @@
       overflow: hidden;
       transition: background .25s ease;
     }
-    .service-card:hover {
-      background: var(--navy-light);
-    }
+    .service-card:hover { background: var(--navy-light); }
     .service-card::after {
       content: '';
       position: absolute;
@@ -506,7 +403,6 @@
       transition: opacity .25s ease;
     }
     .service-card:hover::after { opacity: 1; }
-
     .service-num {
       font-size: 10px;
       letter-spacing: 0.2em;
@@ -523,13 +419,7 @@
       margin-bottom: 14px;
     }
     .service-card p { font-size: 14px; }
-
-    .service-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-top: 22px;
-    }
+    .service-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 22px; }
     .service-tags span {
       padding: 5px 10px;
       border: 1px solid var(--line);
@@ -555,7 +445,6 @@
       transition: background .25s ease;
     }
     .step:hover { background: var(--navy-light); }
-
     .step-num {
       font-family: var(--font-serif);
       font-size: 52px;
@@ -593,8 +482,6 @@
       text-transform: uppercase;
       color: var(--green);
     }
-
-    /* Principes */
     .principles-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -602,10 +489,7 @@
       background: var(--line);
       margin-top: 48px;
     }
-    .principle {
-      background: rgba(255,255,255,0.02);
-      padding: 30px;
-    }
+    .principle { background: rgba(255,255,255,0.02); padding: 30px; }
     .principle h3 { font-size: 16px; margin-bottom: 10px; }
     .principle p { font-size: 14px; }
 
@@ -613,7 +497,6 @@
        INSIGHTS
     ══════════════════════════════════════════ */
     .insights-list { display: grid; gap: 0; }
-
     .insight-row {
       display: grid;
       grid-template-columns: 180px 1fr;
@@ -625,12 +508,7 @@
     }
     .insight-row:hover { background: rgba(255,255,255,0.02); }
     .insight-row:last-child { border-bottom: 1px solid var(--line); }
-
-    .insight-meta {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
+    .insight-meta { display: flex; flex-direction: column; gap: 8px; }
     .insight-cat {
       display: inline-block;
       padding: 4px 10px;
@@ -640,11 +518,7 @@
       text-transform: uppercase;
       color: var(--green);
     }
-    .insight-date {
-      font-size: 12px;
-      color: var(--faint);
-      letter-spacing: 0.08em;
-    }
+    .insight-date { font-size: 12px; color: var(--faint); letter-spacing: 0.08em; }
     .insight-body h3 {
       font-family: var(--font-serif);
       font-size: 22px;
@@ -655,17 +529,13 @@
     }
     .insight-row:hover .insight-body h3 { color: var(--text); }
     .insight-body p { font-size: 14px; line-height: 1.75; }
-
     .insights-note {
       margin-top: 40px;
       padding: 24px 28px;
       border: 1px solid var(--line);
       border-left: 2px solid var(--green);
     }
-    .insights-note p {
-      font-size: 14px;
-      color: var(--muted);
-    }
+    .insights-note p { font-size: 14px; color: var(--muted); }
 
     /* ══════════════════════════════════════════
        CONTACT
@@ -676,7 +546,6 @@
       gap: 80px;
       align-items: start;
     }
-
     .contact-info .email-link {
       display: block;
       font-family: var(--font-serif);
@@ -687,17 +556,8 @@
       transition: opacity .2s ease;
     }
     .contact-info .email-link:hover { opacity: 0.75; }
-
-    .contact-meta {
-      margin-top: 36px;
-      padding-top: 28px;
-      border-top: 1px solid var(--line);
-    }
-    .contact-meta p {
-      font-size: 13px;
-      color: var(--muted);
-      line-height: 2;
-    }
+    .contact-meta { margin-top: 36px; padding-top: 28px; border-top: 1px solid var(--line); }
+    .contact-meta p { font-size: 13px; color: var(--muted); line-height: 2; }
 
     /* Form */
     .form-group { margin-bottom: 20px; }
@@ -734,7 +594,6 @@
     .form-group textarea::placeholder { color: var(--faint); }
     .form-group select option { background: var(--navy); }
     .form-group textarea { height: 110px; resize: vertical; }
-
     .form-submit {
       width: 100%;
       background: var(--green);
@@ -750,52 +609,155 @@
       cursor: pointer;
       transition: background .22s ease, transform .22s ease;
     }
-    .form-submit:hover {
-      background: var(--green-dark);
-      transform: translateY(-2px);
-    }
-    .form-note {
-      font-size: 12px;
-      color: var(--faint);
-      text-align: center;
-      margin-top: 12px;
-    }
+    .form-submit:hover { background: var(--green-dark); transform: translateY(-2px); }
+    .form-note { font-size: 12px; color: var(--faint); text-align: center; margin-top: 12px; }
 
     /* ══════════════════════════════════════════
        FOOTER
     ══════════════════════════════════════════ */
     footer {
       border-top: 1px solid var(--line);
-      padding: 36px 0;
+      padding: 40px 0 32px;
     }
-    .footer-inner {
+
+    /* Rangée haute : logo · réseaux sociaux · localisation */
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      padding-bottom: 28px;
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 24px;
+    }
+
+    /* Logo footer */
+    .footer-logo img {
+      height: 26px;
+      width: auto;
+      filter: brightness(0) invert(1);
+      opacity: 0.65;
+      transition: opacity .2s ease;
+    }
+    .footer-logo img:hover { opacity: 1; }
+
+    /* Social Media Links */
+    .social-links {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .social-links a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px; height: 34px;
+      border: 1px solid var(--line);
+      color: var(--muted);
+      transition: border-color .2s ease, color .2s ease, transform .2s ease;
+    }
+    .social-links a:hover {
+      border-color: var(--line-green);
+      color: var(--green);
+      transform: translateY(-2px);
+    }
+    .social-links svg { width: 15px; height: 15px; fill: currentColor; }
+
+    /* Localisation */
+    .footer-location {
+      font-size: 12px;
+      color: var(--faint);
+      letter-spacing: 0.08em;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .footer-location svg { width: 12px; height: 12px; fill: var(--green); opacity: 0.7; flex-shrink: 0; }
+
+    /* Rangée basse : email + copyright + liens légaux */
+    .footer-bottom {
       display: flex;
       justify-content: space-between;
       align-items: center;
       gap: 24px;
       flex-wrap: wrap;
     }
-    .footer-brand {
+    .footer-left-info { font-size: 12px; color: var(--faint); line-height: 1.9; }
+    .footer-left-info a { color: var(--green); transition: opacity .2s ease; }
+    .footer-left-info a:hover { opacity: 0.75; }
+
+    /* Liens légaux */
+    .footer-legal { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+    .footer-legal a {
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      color: var(--faint);
+      text-transform: uppercase;
+      transition: color .2s ease;
+      cursor: pointer;
+    }
+    .footer-legal a:hover { color: var(--muted); }
+    .footer-legal .sep { color: var(--line); font-size: 11px; }
+
+    /* ══════════════════════════════════════════
+       MODALES LÉGALES
+    ══════════════════════════════════════════ */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 500;
+      background: rgba(7,21,40,0.93);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal-box {
+      background: var(--navy-light);
+      border: 1px solid var(--line);
+      max-width: 660px;
+      width: 100%;
+      max-height: 82vh;
+      overflow-y: auto;
+      padding: 44px 40px;
+      position: relative;
+    }
+    .modal-box::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--green), transparent);
+    }
+    .modal-close {
+      position: absolute;
+      top: 14px; right: 14px;
+      background: none;
+      border: 1px solid var(--line);
+      color: var(--muted);
+      width: 30px; height: 30px;
+      cursor: pointer;
+      font-size: 17px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: color .2s ease, border-color .2s ease;
+    }
+    .modal-close:hover { color: var(--white); border-color: var(--muted); }
+    .modal-box h2 { font-size: clamp(22px, 3vw, 30px); margin-bottom: 28px; }
+    .modal-box h3 {
       font-size: 14px;
-      font-weight: 500;
-      letter-spacing: 0.18em;
+      color: var(--green);
+      margin: 22px 0 8px;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
     }
-    .footer-brand span {
-      color: var(--green);
-      margin-left: 6px;
-    }
-    .footer-info {
-      font-size: 12px;
-      color: var(--faint);
-      text-align: right;
-      line-height: 1.9;
-    }
-    .footer-info a {
-      color: var(--green);
-      transition: opacity .2s ease;
-    }
-    .footer-info a:hover { opacity: 0.75; }
+    .modal-box p { font-size: 14px; color: var(--text); line-height: 1.8; margin-bottom: 10px; }
+    .modal-box strong { color: var(--white); }
 
     /* ══════════════════════════════════════════
        ANIMATIONS
@@ -805,22 +767,18 @@
       transform: translateY(18px);
       transition: opacity .7s ease, transform .7s ease;
     }
-    .fade.in {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    .fade.in { opacity: 1; transform: translateY(0); }
 
     /* ══════════════════════════════════════════
        RESPONSIVE
     ══════════════════════════════════════════ */
     @media (max-width: 960px) {
       .hero-grid { grid-template-columns: 1fr; }
-      .hero-card { display: none; } /* simplify on tablet */
+      .hero-card { display: none; }
       .sec-head { grid-template-columns: 1fr; gap: 16px; }
       .steps-grid { grid-template-columns: repeat(2, 1fr); }
       .contact-grid { grid-template-columns: 1fr; gap: 48px; }
     }
-
     @media (max-width: 768px) {
       :root { --container: calc(100vw - 32px); }
       section { padding: 64px 0; }
@@ -831,10 +789,11 @@
       .principles-grid { grid-template-columns: 1fr; }
       .hero-stats { grid-template-columns: 1fr 1fr; }
       .insight-row { grid-template-columns: 1fr; gap: 12px; padding: 24px 0; }
-      .footer-inner { flex-direction: column; align-items: flex-start; }
-      .footer-info { text-align: left; }
+      .footer-top { flex-direction: column; align-items: flex-start; gap: 20px; }
+      .footer-bottom { flex-direction: column; align-items: flex-start; gap: 16px; }
+      .footer-legal { gap: 10px; }
+      .modal-box { padding: 32px 22px; }
     }
-
     @media (max-width: 480px) {
       h1 { font-size: clamp(36px, 11vw, 52px); }
       .hero-stats { grid-template-columns: 1fr; }
@@ -852,9 +811,10 @@
   ═══════════════════════════════════════ -->
   <header id="site-header">
     <div class="nav">
-      <a href="#accueil" class="nav-brand">
-        <div class="nav-logo-dot"></div>
-        <span class="nav-logo">TRUVARA</span>
+
+      <!-- Logo haut gauche -->
+      <a href="#accueil" class="nav-brand" aria-label="TRUVARA — Retour à l'accueil">
+        <img src="./assetslogo.png" alt="TRUVARA">
       </a>
 
       <div class="nav-links">
@@ -906,7 +866,6 @@
             <a href="#contact" class="btn">Entrer en discussion</a>
             <a href="#expertises" class="btn-outline">Découvrir les expertises</a>
           </div>
-
           <div class="hero-stats fade">
             <div class="stat">
               <div class="stat-val">−20%</div>
@@ -924,17 +883,17 @@
         </div>
 
         <aside>
-  <div class="hero-card fade">
-    <span class="card-tag">Ce qui distingue TRUVARA</span>
-    <h3>Un conseil indépendant pour structurer les transformations achats & supply chain.</h3>
-    <p>TRUVARA relie stratégie achats, transformation opérationnelle, intelligence artificielle, blockchain et gouvernance de confiance dans une seule proposition de valeur.</p>
-    <div class="bullet-list">
-      <div class="bullet">Intervention auprès de groupes internationaux multi-entités et multi-sites.</div>
-      <div class="bullet">Lecture direction générale, sans jargon technologique inutile.</div>
-      <div class="bullet">Approche orientée décision, exécution et preuves de valeur.</div>
-    </div>
-  </div>
-</aside>
+          <div class="hero-card fade">
+            <span class="card-tag">Ce qui distingue TRUVARA</span>
+            <h3>Un conseil indépendant pour structurer les transformations achats & supply chain.</h3>
+            <p>TRUVARA relie stratégie achats, transformation opérationnelle, intelligence artificielle, blockchain et gouvernance de confiance dans une seule proposition de valeur.</p>
+            <div class="bullet-list">
+              <div class="bullet">Intervention auprès de groupes internationaux multi-entités et multi-sites.</div>
+              <div class="bullet">Lecture direction générale, sans jargon technologique inutile.</div>
+              <div class="bullet">Approche orientée décision, exécution et preuves de valeur.</div>
+            </div>
+          </div>
+        </aside>
 
       </div>
     </div>
@@ -962,7 +921,6 @@
   ═══════════════════════════════════════ -->
   <section id="expertises" class="section-alt">
     <div class="container">
-
       <div class="sec-head fade">
         <div>
           <div class="eyebrow">Expertises</div>
@@ -970,9 +928,7 @@
         </div>
         <p>Chaque intervention est un mandat de transformation clair, conçu pour produire des résultats visibles au niveau direction générale.</p>
       </div>
-
       <div class="accent-line"></div>
-
       <div class="services-grid">
 
         <div class="service-card fade">
@@ -996,12 +952,8 @@
         <div class="service-card fade">
           <span class="service-num">03 · Traçabilité & confiance</span>
           <h3>Installer des architectures de confiance sur toute la chaîne de valeur.</h3>
-<p>TRUVARA aide à prouver l'origine, sécuriser les flux critiques et renforcer la conformité fournisseurs dans des environnements réglementés et multi-pays, avec ou sans blockchain.</p>
-<div class="service-tags">
-
-
-         
-          
+          <p>TRUVARA aide à prouver l'origine, sécuriser les flux critiques et renforcer la conformité fournisseurs dans des environnements réglementés et multi-pays, avec ou sans blockchain.</p>
+          <div class="service-tags">
             <span>Blockchain</span><span>Traceability</span><span>CSRD · CSDDD</span>
           </div>
         </div>
@@ -1009,7 +961,7 @@
         <div class="service-card fade">
           <span class="service-num">04 · Transformation bout en bout</span>
           <h3>Passer d'une ambition stratégique à une exécution visible sur le terrain.</h3>
-          <p>TRUVARA intervient au niveau direction pour cadrer les transformations achats & supply chain, sécuriser les arbitrages et installer un pilotage clair de la performance, en lien avec les équipes achats, opérations, finance et juridique.</p>
+          <p>TRUVARA intervient au niveau direction pour cadrer les transformations achats & supply chain, sécuriser les arbitrages et installer un pilotage clair de la performance.</p>
           <div class="service-tags">
             <span>Change</span><span>Program office</span><span>Execution</span>
           </div>
@@ -1025,7 +977,6 @@
   ═══════════════════════════════════════ -->
   <section id="approche">
     <div class="container">
-
       <div class="sec-head fade">
         <div>
           <div class="eyebrow">Approche</div>
@@ -1033,9 +984,7 @@
         </div>
         <p>Chaque intervention est conçue sur mesure, alignée avec les enjeux de direction générale et les contraintes opérationnelles réelles, selon une séquence de travail rigoureuse adaptée à votre contexte.</p>
       </div>
-
       <div class="accent-line"></div>
-
       <div class="steps-grid">
 
         <div class="step fade">
@@ -1100,7 +1049,6 @@
   ═══════════════════════════════════════ -->
   <section id="insights" class="section-alt">
     <div class="container">
-
       <div class="sec-head fade">
         <div>
           <div class="eyebrow">Insights</div>
@@ -1108,9 +1056,7 @@
         </div>
         <p>Points de vue sur les transformations achats & supply chain, l'IA appliquée, la réglementation et la gouvernance des organisations complexes.</p>
       </div>
-
       <div class="accent-line"></div>
-
       <div class="insights-list">
 
         <div class="insight-row fade">
@@ -1158,11 +1104,9 @@
         </div>
 
       </div>
-
       <div class="insights-note fade">
         <p>La bibliothèque d'insights TRUVARA est en cours de constitution. De nouveaux contenus seront publiés régulièrement.</p>
       </div>
-
     </div>
   </section>
 
@@ -1172,7 +1116,6 @@
   ═══════════════════════════════════════ -->
   <section id="contact">
     <div class="container">
-
       <div class="sec-head fade">
         <div>
           <div class="eyebrow">Contact</div>
@@ -1180,45 +1123,32 @@
         </div>
         <p>Échanges confidentiels — approche sélective. TRUVARA intervient auprès de dirigeants et d'équipes qui recherchent un partenaire stratégique rigoureux.</p>
       </div>
-
       <div class="accent-line"></div>
-
       <div class="contact-grid">
 
-        <!-- Info -->
         <div class="fade">
           <p style="font-size:14px; color:var(--muted);">Adresse email</p>
-          <a href="mailto:contact@truvara.io" class="email-link">contact@truvara.io</a>
+          <a href="/cdn-cgi/l/email-protection#74171b1a0015170034000601021506155a1d1b" class="email-link"><span class="__cf_email__" data-cfemail="86e5e9e8f2e7e5f2c6f2f4f3f0e7f4e7a8efe9">[email&#160;protected]</span></a>
           <p style="font-size:15px;">Pour toute demande de collaboration, échange exploratoire ou question sur les expertises TRUVARA.</p>
-
           <div class="contact-meta">
-            <p>
-              TRUVARA<br>
-              SIREN 521 665 869<br>
-              © 2026 — Tous droits réservés
-            </p>
+            <p>TRUVARA<br>Paris, France<br>© 2026 — Tous droits réservés</p>
           </div>
         </div>
 
-        <!-- Formulaire -->
         <div class="fade">
           <form action="mailto:contact@truvara.io" method="post" enctype="text/plain">
-
             <div class="form-group">
               <label for="name">Nom & prénom</label>
               <input type="text" id="name" name="name" placeholder="Votre nom" required>
             </div>
-
             <div class="form-group">
               <label for="org">Organisation</label>
               <input type="text" id="org" name="org" placeholder="Entreprise ou institution">
             </div>
-
             <div class="form-group">
               <label for="email">Email professionnel</label>
               <input type="email" id="email" name="email" placeholder="vous@entreprise.com" required>
             </div>
-
             <div class="form-group">
               <label for="sujet">Sujet</label>
               <select id="sujet" name="sujet">
@@ -1230,15 +1160,12 @@
                 <option>Autre</option>
               </select>
             </div>
-
             <div class="form-group">
               <label for="message">Message</label>
               <textarea id="message" name="message" placeholder="Décrivez brièvement votre contexte…"></textarea>
             </div>
-
             <button type="submit" class="form-submit">Envoyer le message</button>
             <p class="form-note">Vos données ne sont pas stockées. Réponse sous 48h ouvrées.</p>
-
           </form>
         </div>
 
@@ -1252,34 +1179,184 @@
   ═══════════════════════════════════════ -->
   <footer>
     <div class="container">
-      <div class="footer-inner">
-        <div class="footer-brand">
-          TRUVARA<span>·</span>
+
+      <!-- Rangée haute : logo · réseaux sociaux · localisation -->
+      <div class="footer-top">
+
+        <!-- Logo footer -->
+        <a href="#accueil" class="footer-logo" aria-label="TRUVARA">
+          <img src="./assetslogo.png" alt="TRUVARA">
+        </a>
+
+        <!-- Social Media Links -->
+        <div class="social-links" aria-label="Réseaux sociaux TRUVARA">
+
+          <!-- LinkedIn (profil personnel Sonia Nogueira en attendant page TRUVARA) -->
+          <a href="https://linkedin.com/in/sonia-nogueira" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+
+          <!-- X / Twitter — remplacer # par votre URL -->
+          <a href="#" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
+            <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+
+          <!-- YouTube — remplacer # par votre URL -->
+          <a href="#" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+            <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </a>
+
+          <!-- Instagram — remplacer # par votre URL -->
+          <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          </a>
+
+          <!-- Reddit — remplacer # par votre URL -->
+          <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Reddit">
+            <svg viewBox="0 0 24 24"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg>
+          </a>
+
         </div>
-        <div class="footer-info">
-          <a href="mailto:contact@truvara.io">contact@truvara.io</a><br>
-          SIREN 521 665 869 — © 2026 TRUVARA. Tous droits réservés.
+
+        <!-- Localisation -->
+        <div class="footer-location">
+          <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          Paris, France
         </div>
+
+      </div>
+
+      <!-- Rangée basse : email · copyright · liens légaux -->
+      <div class="footer-bottom">
+
+        <div class="footer-left-info">
+          <a href="/cdn-cgi/l/email-protection#b8dbd7d6ccd9dbccf8cccacdced9cad996d1d7"><span class="__cf_email__" data-cfemail="41222e2f3520223501353334372033206f282e">[email&#160;protected]</span></a>
+          &nbsp;·&nbsp; © 2026 TRUVARA. Tous droits réservés.
+        </div>
+
+        <!-- Liens légaux — ouvrent des modales intégrées -->
+        <nav class="footer-legal" aria-label="Liens légaux">
+          <a onclick="openModal('modal-privacy')">Politique de confidentialité</a>
+          <span class="sep">·</span>
+          <a onclick="openModal('modal-cookies')">Politique de cookies</a>
+          <span class="sep">·</span>
+          <a onclick="openModal('modal-legal')">Mentions légales</a>
+        </nav>
+
       </div>
     </div>
   </footer>
 
 
   <!-- ═══════════════════════════════════════
+       MODALE — POLITIQUE DE CONFIDENTIALITÉ
+  ═══════════════════════════════════════ -->
+  <div class="modal-overlay" id="modal-privacy" role="dialog" aria-modal="true" aria-labelledby="title-privacy">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeModal('modal-privacy')" aria-label="Fermer">×</button>
+      <h2 id="title-privacy">Politique de confidentialité</h2>
+
+      <h3>Responsable du traitement</h3>
+      <p>TRUVARA — <strong><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="ceada1a0baafadba8ebabcbbb8afbcafe0a7a1">[email&#160;protected]</a></strong> — Paris, France.</p>
+
+      <h3>Données collectées</h3>
+      <p>Ce site collecte uniquement les données que vous transmettez volontairement via le formulaire de contact : nom, organisation, adresse email et message. Aucune donnée n'est collectée automatiquement à des fins de profilage.</p>
+
+      <h3>Finalité du traitement</h3>
+      <p>Les données collectées sont utilisées exclusivement pour répondre à vos demandes de contact ou de collaboration. Elles ne sont pas transmises à des tiers.</p>
+
+      <h3>Durée de conservation</h3>
+      <p>Les données de contact sont conservées pendant la durée nécessaire au traitement de votre demande, et supprimées au terme de la relation commerciale ou sur simple demande.</p>
+
+      <h3>Vos droits (RGPD)</h3>
+      <p>Conformément au RGPD, vous disposez d'un droit d'accès, de rectification, de suppression et de portabilité de vos données. Pour exercer ces droits : <strong><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f99a96978d989a8db98d8b8c8f988b98d79096">[email&#160;protected]</a></strong></p>
+
+      <h3>Hébergement</h3>
+      <p>Ce site est hébergé via GitHub Pages (GitHub, Inc. — San Francisco, CA, USA). Politique de confidentialité GitHub disponible sur github.com/site/privacy.</p>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════
+       MODALE — POLITIQUE DE COOKIES
+  ═══════════════════════════════════════ -->
+  <div class="modal-overlay" id="modal-cookies" role="dialog" aria-modal="true" aria-labelledby="title-cookies">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeModal('modal-cookies')" aria-label="Fermer">×</button>
+      <h2 id="title-cookies">Politique de cookies (UE)</h2>
+
+      <h3>Qu'est-ce qu'un cookie ?</h3>
+      <p>Un cookie est un petit fichier texte déposé sur votre terminal lors de la visite d'un site web. Il permet de mémoriser des informations relatives à votre navigation.</p>
+
+      <h3>Cookies utilisés sur ce site</h3>
+      <p>Ce site n'utilise <strong>aucun cookie de traçage, publicitaire ou analytique</strong>. Aucun cookie tiers n'est déposé sur votre terminal.</p>
+      <p>Les seuls éléments chargés depuis des serveurs externes sont les polices Google Fonts (googleapis.com), qui peuvent déposer un cookie technique de session. Ce cookie ne collecte aucune donnée personnelle identifiable.</p>
+
+      <h3>Conformité RGPD & Directive ePrivacy</h3>
+      <p>En l'absence de cookies non essentiels, aucun bandeau de consentement n'est requis conformément aux lignes directrices de la CNIL et à la Directive ePrivacy 2002/58/CE.</p>
+
+      <h3>Gestion des cookies</h3>
+      <p>Vous pouvez à tout moment configurer votre navigateur pour refuser ou supprimer les cookies. Consultez l'aide de votre navigateur pour plus d'informations.</p>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════
+       MODALE — MENTIONS LÉGALES
+  ═══════════════════════════════════════ -->
+  <div class="modal-overlay" id="modal-legal" role="dialog" aria-modal="true" aria-labelledby="title-legal">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeModal('modal-legal')" aria-label="Fermer">×</button>
+      <h2 id="title-legal">Mentions légales</h2>
+
+      <h3>Éditeur du site</h3>
+      <p>
+        <strong>TRUVARA</strong><br>
+        Conseil stratégique en achats & supply chain<br>
+        Paris, France<br>
+        Email : <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="abc8c4c5dfcac8dfebdfd9deddcad9ca85c2c4">[email&#160;protected]</a><br>
+        SIREN : 521 665 869
+      </p>
+
+      <h3>Directrice de la publication</h3>
+      <p>Sonia Nogueira</p>
+
+      <h3>Hébergement</h3>
+      <p>GitHub Pages — GitHub, Inc.<br>88 Colin P Kelly Jr St, San Francisco, CA 94107, USA</p>
+
+      <h3>Propriété intellectuelle</h3>
+      <p>L'ensemble des contenus présents sur ce site (textes, visuels, structure) est la propriété exclusive de TRUVARA. Toute reproduction, même partielle, est interdite sans autorisation écrite préalable.</p>
+
+      <h3>Limitation de responsabilité</h3>
+      <p>TRUVARA s'efforce de maintenir les informations publiées à jour. Toutefois, le site ne saurait être tenu responsable d'éventuelles inexactitudes ou d'une indisponibilité temporaire du service.</p>
+
+      <h3>Droit applicable</h3>
+      <p>Le présent site est soumis au droit français. Tout litige relatif à son utilisation sera porté devant les juridictions compétentes de Paris.</p>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════
        JAVASCRIPT
   ═══════════════════════════════════════ -->
-  <script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     // 1. Fade-in au scroll
     const fades = document.querySelectorAll('.fade');
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('in');
-          io.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
-    fades.forEach(el => io.observe(el));
+    // Fallback local : si ouvert depuis file:// ou pas de support IO,
+    // on rend tout le contenu visible immédiatement
+    if (window.location.protocol === 'file:' || !('IntersectionObserver' in window)) {
+      fades.forEach(el => el.classList.add('in'));
+    } else {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+      fades.forEach(el => io.observe(el));
+    }
 
     // 2. Header shadow on scroll
     const hdr = document.getElementById('site-header');
@@ -1308,14 +1385,13 @@
       burger.classList.toggle('open');
       mobileMenu.classList.toggle('open');
     });
-    // Fermer le menu au clic sur un lien
     mobileMenu.querySelectorAll('a').forEach(a => {
       a.addEventListener('click', () => {
         burger.classList.remove('open');
         mobileMenu.classList.remove('open');
       });
     });
-  </script>
 
-</body>
-</html>
+    // 5. Modales légales
+    function openModal(id) {
+      do
