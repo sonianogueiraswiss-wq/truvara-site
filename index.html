@@ -895,40 +895,40 @@
       <div class="hero-grid">
 
         <div class="hero-copy">
-          <div class="eyebrow fade">Trusted Intelligence. Global Procurement.</div>
-          <h1 class="fade">
+          <div class="eyebrow fade" id="t-eyebrow">Trusted Intelligence. Global Procurement.</div>
+          <h1 class="fade" id="t-h1">
             Building procurement systems<br>
             with <em>high strategic</em><br>
             <span class="dim">standards.</span>
           </h1>
-          <p class="lead fade">
+          <p class="lead fade" id="t-lead">
             TRUVARA supports executive, procurement and supply chain teams
             seeking to move from cost control to a high-performance,
             resilient and trusted operating architecture.
           </p>
           <div class="hero-actions fade">
-            <a href="#contact" class="btn">Start a conversation</a>
-            <a href="#expertises" class="btn-outline">Explore our expertise</a>
+            <a href="#contact" class="btn" id="t-btn-cta">Start a conversation</a>
+            <a href="#expertises" class="btn-outline" id="t-btn-exp">Explore our expertise</a>
           </div>
           <div class="hero-stats fade">
             <div class="stat">
               <div class="stat-val">−20%</div>
-              <div class="stat-label">Procurement cost reduction</div>
+              <div class="stat-label" id="t-stat1">Procurement cost reduction</div>
             </div>
             <div class="stat">
               <div class="stat-val">+30%</div>
-              <div class="stat-label">Supply chain visibility</div>
+              <div class="stat-label" id="t-stat2">Supply chain visibility</div>
             </div>
             <div class="stat">
               <div class="stat-val">360°</div>
-              <div class="stat-label">Control & compliance</div>
+              <div class="stat-label" id="t-stat3">Control & compliance</div>
             </div>
           </div>
         </div>
 
         <aside>
           <div class="hero-card fade">
-            <span class="card-tag">What sets TRUVARA apart</span>
+            <span class="card-tag" id="t-card-tag">What sets TRUVARA apart</span>
             <h3>Independent advisory to structure procurement & supply chain transformations.</h3>
             <p>TRUVARA integrates procurement strategy, operational transformation, artificial intelligence, blockchain and trust governance into a single value proposition.</p>
             <div class="bullet-list">
@@ -947,7 +947,7 @@
   <div class="trust-strip">
     <div class="container">
       <div class="trust-inner fade">
-        <span class="trust-label">Domaines</span>
+        <span class="trust-label" id="t-trust-lbl">Domaines</span>
         <div class="tags">
           <span class="tag">Procurement strategy</span>
           <span class="tag">Supply chain</span>
@@ -967,8 +967,8 @@
     <div class="container">
       <div class="sec-head fade">
         <div>
-          <div class="eyebrow">Expertise</div>
-          <h2>Engagements designed to create measurable value.</h2>
+          <div class="eyebrow" id="t-exp-ey">Expertise</div>
+          <h2 id="t-exp-h2">Engagements designed to create measurable value.</h2>
         </div>
         <p>Every engagement is a clear transformation mandate, designed to produce results visible at executive level.</p>
       </div>
@@ -1013,7 +1013,7 @@
 
       </div>
       <div class="fade" style="text-align:center; margin-top:48px;">
-        <a href="#contact" class="btn">Get in touch</a>
+        <a href="#contact" class="btn" id="t-exp-cta">Get in touch</a>
       </div>
     </div>
   </section>
@@ -1026,8 +1026,8 @@
     <div class="container">
       <div class="sec-head fade">
         <div>
-          <div class="eyebrow">Approach</div>
-          <h2>A focused, rigorous, <em>calibrated</em> method.</h2>
+          <div class="eyebrow" id="t-app-ey">Approach</div>
+          <h2 id="t-app-h2">A focused, rigorous, <em>calibrated</em> method.</h2>
         </div>
         <p>Every engagement is tailored, aligned with executive priorities and real operational constraints, following a rigorous work sequence adapted to your context.</p>
       </div>
@@ -1099,9 +1099,9 @@
       <div class="sec-head fade">
         <div>
           <div class="eyebrow">Insights</div>
-          <h2>A space for strategic thinking.</h2>
+          <h2 id="t-ins-h2">A space for strategic thinking.</h2>
         </div>
-        <p>Perspectives on procurement & supply chain transformation, applied AI, regulation and governance of complex organisations.</p>
+        <p id="t-ins-p">Perspectives on procurement & supply chain transformation, applied AI, regulation and governance of complex organisations.</p>
       </div>
       <div class="accent-line"></div>
       <div class="insights-list">
@@ -1166,7 +1166,7 @@
       <div class="sec-head fade">
         <div>
           <div class="eyebrow">Contact</div>
-          <h2>Start a strategic conversation.</h2>
+          <h2 id="t-contact-h2">Start a strategic conversation.</h2>
         </div>
         <p>Confidential exchanges — selective approach. TRUVARA works with executives and teams seeking a rigorous strategic partner.</p>
       </div>
@@ -2038,7 +2038,7 @@ To provide you with a precise simulation, what is your annual procurement spend?
           var s = STEPS[avaStep];
           var qr = s.quick
             ? '<div class="ava-qr">' + s.quick.map(function(q){
-                return '<button class="ava-qr-btn" onclick="avaQuick(\'' + q.replace(/'/g,"\\'") + ''\')">' + esc(q) + '</button>';
+                return '<button class="ava-qr-btn" data-val="' + esc(q) + '" onclick="avaQuick(this.getAttribute(\'data-val\'))">' + esc(q) + '</button>';
               }).join('') + '</div>'
             : '';
           addMsg('ava', esc(s.text).replace(/
@@ -2108,7 +2108,7 @@ To provide you with a precise simulation, what is your annual procurement spend?
         setTimeout(function() {
           var s = STEPS[0];
           var qr = '<div class="ava-qr">' + s.quick.map(function(q){
-            return '<button class="ava-qr-btn" onclick="avaQuick(\'' + q.replace(/'/g,"\\'") + ''\')">' + esc(q) + '</button>';
+            return '<button class="ava-qr-btn" data-val="' + esc(q) + '" onclick="avaQuick(this.getAttribute(\'data-val\'))">' + esc(q) + '</button>';
           }).join('') + '</div>';
           addMsg('ava', esc(s.text).replace(/
 /g,'<br>') + qr);
@@ -2132,76 +2132,114 @@ To provide you with a precise simulation, what is your annual procurement spend?
   </script>
 
   <script>
-  // ── SYSTÈME DE LANGUE EN/FR ──
-  var TRANSLATIONS = {
+  // ── LANGUE EN / FR — innerHTML direct sur IDs ──
+  var T = {
     en: {
-      'hero-title':     'Strategic Procurement.<br>Operational Intelligence.',
-      'hero-sub':       'TRUVARA supports executive teams in transforming their procurement and supply chain ecosystems — from governance to sustainable performance.',
-      'hero-cta':       'Explore our expertise',
-      'nav-expertises': 'Expertise',
-      'nav-approche':   'Approach',
-      'nav-insights':   'Insights',
-      'nav-contact':    'Contact',
-      'exp-eyebrow':    'Expertise',
-      'exp-title':      'Four pillars of procurement transformation',
-      'cta-contact':    'Get in touch',
-      'contact-title':  'Let's talk',
-      'contact-sub':    'For any collaboration request, exploratory discussion or question about TRUVARA's expertise.',
-      'form-name':      'Full name',
-      'form-org':       'Organisation',
-      'form-email':     'Professional email',
-      'form-subject':   'Subject',
-      'form-msg':       'Briefly describe your context…',
-      'form-send':      'Send message',
-      'form-note':      'Your data is not stored. Response within 48 business hours.',
+      't-eyebrow':    'Trusted Intelligence. Global Procurement.',
+      't-h1':         'Building procurement systems<br>with <em>high strategic</em><br><span class="dim">standards.</span>',
+      't-lead':       'TRUVARA supports executive, procurement and supply chain teams seeking to move from cost control to a high-performance, resilient and trusted operating architecture.',
+      't-btn-cta':    'Start a conversation',
+      't-btn-exp':    'Explore our expertise',
+      't-stat1':      'Procurement cost reduction',
+      't-stat2':      'Supply chain visibility',
+      't-stat3':      'Control &amp; compliance',
+      't-card-tag':   'What sets TRUVARA apart',
+      't-trust-lbl':  'Domains',
+      't-nav-exp':    'Expertise',
+      't-nav-app':    'Approach',
+      't-exp-ey':     'Expertise',
+      't-exp-h2':     'Engagements designed to create measurable value.',
+      't-app-ey':     'Approach',
+      't-app-h2':     'A focused, rigorous, <em>calibrated</em> method.',
+      't-ins-ey':     'Insights',
+      't-ins-h2':     'A space for strategic thinking.',
+      't-ins-p':      'Perspectives on procurement &amp; supply chain transformation, applied AI, regulation and governance of complex organisations.',
+      't-contact-h2': 'Start a strategic conversation.',
+      't-contact-p':  'For any collaboration request, exploratory discussion or question about TRUVARA\'s expertise.',
+      't-exp-cta':    'Get in touch',
+      'form': {
+        name_lbl:'Full name', name_ph:'Your name',
+        org_ph:'Company or institution',
+        email_lbl:'Professional email', email_ph:'you@company.com',
+        subj_lbl:'Subject',
+        subj_opts:['Select a subject','Procurement strategy','Applied AI','Traceability &amp; trust','Transformation','Other'],
+        msg_ph:'Briefly describe your context\u2026',
+        send:'Send message',
+        note:'Your data is not stored. Response within 48 business hours.'
+      }
     },
     fr: {
-      'hero-title':     'Performance Achats.<br>Intelligence Opérationnelle.',
-      'hero-sub':       'TRUVARA supports executive teams in transforming their procurement and supply chain systems — from governance to sustainable performance.',
-      'hero-cta':       'Découvrir nos expertises',
-      'nav-expertises': 'Expertise',
-      'nav-approche':   'Approach',
-      'nav-insights':   'Insights',
-      'nav-contact':    'Contact',
-      'exp-eyebrow':    'Expertise',
-      'exp-title':      'Four pillars of procurement transformation',
-      'cta-contact':    'Get in touch',
-      'contact-title':  'Parlons-en',
-      'contact-sub':    'Pour toute demande de collaboration, échange exploratoire ou question sur les expertises TRUVARA.',
-      'form-name':      'Nom & prénom',
-      'form-org':       'Organisation',
-      'form-email':     'Email professionnel',
-      'form-subject':   'Sujet',
-      'form-msg':       'Décrivez brièvement votre contexte…',
-      'form-send':      'Envoyer le message',
-      'form-note':      'Vos données ne sont pas stockées. Réponse sous 48h ouvrées.',
+      't-eyebrow':    'Trusted Intelligence. Global Procurement.',
+      't-h1':         'Structurer des syst\u00e8mes achats<br>\u00e0 <em>haute exigence</em><br><span class="dim">strat\u00e9gique.</span>',
+      't-lead':       'TRUVARA accompagne les directions g\u00e9n\u00e9rales, achats et supply chain qui veulent passer d\u2019une fonction de pilotage des co\u00fbts \u00e0 une architecture de performance, de r\u00e9silience et de confiance.',
+      't-btn-cta':    'Lancer une discussion',
+      't-btn-exp':    'D\u00e9couvrir les expertises',
+      't-stat1':      'R\u00e9duction des co\u00fbts achats',
+      't-stat2':      'Visibilit\u00e9 supply chain',
+      't-stat3':      'Contr\u00f4le &amp; conformit\u00e9',
+      't-card-tag':   'Ce qui distingue TRUVARA',
+      't-trust-lbl':  'Domaines',
+      't-nav-exp':    'Expertises',
+      't-nav-app':    'Approche',
+      't-exp-ey':     'Expertises',
+      't-exp-h2':     'Des interventions con\u00e7ues pour cr\u00e9er de la valeur.',
+      't-app-ey':     'Approche',
+      't-app-h2':     'Une m\u00e9thode sobre, exigeante, <em>calibr\u00e9e</em>.',
+      't-ins-ey':     'Insights',
+      't-ins-h2':     'Un espace de r\u00e9flexion strat\u00e9gique.',
+      't-ins-p':      'Points de vue sur les transformations achats &amp; supply chain, l\u2019IA appliqu\u00e9e, la r\u00e9glementation et la gouvernance des organisations complexes.',
+      't-contact-h2': 'Lancer une conversation de direction.',
+      't-contact-p':  'Pour toute demande de collaboration, \u00e9change exploratoire ou question sur les expertises TRUVARA.',
+      't-exp-cta':    'Prendre contact',
+      'form': {
+        name_lbl:'Nom &amp; pr\u00e9nom', name_ph:'Votre nom',
+        org_ph:'Entreprise ou institution',
+        email_lbl:'Email professionnel', email_ph:'vous@entreprise.com',
+        subj_lbl:'Sujet',
+        subj_opts:['S\u00e9lectionner un sujet','Strat\u00e9gie achats','IA appliqu\u00e9e','Tra\u00e7abilit\u00e9 &amp; confiance','Transformation','Autre'],
+        msg_ph:'D\u00e9crivez bri\u00e8vement votre contexte\u2026',
+        send:'Envoyer le message',
+        note:'Vos donn\u00e9es ne sont pas stock\u00e9es. R\u00e9ponse sous 48h ouvr\u00e9es.'
+      }
     }
   };
 
-  var currentLang = 'en';
-
   function setLang(lang) {
-    currentLang = lang;
     document.documentElement.lang = lang;
     document.getElementById('lang-en').classList.toggle('active', lang === 'en');
     document.getElementById('lang-fr').classList.toggle('active', lang === 'fr');
-    var t = TRANSLATIONS[lang];
-    document.querySelectorAll('[data-i18n]').forEach(function(el) {
-      var key = el.getAttribute('data-i18n');
-      if (t[key]) {
-        if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
-          el.placeholder = t[key];
-        } else if (el.tagName === 'OPTION' && key === 'form-subject-default') {
-          el.textContent = t[key];
-        } else {
-          el.innerHTML = t[key];
-        }
-      }
-    });
-    // AVA language
-    if (window.avaSetLang) window.avaSetLang(lang);
+
+    // Textes principaux via ID
+    var d = T[lang];
+    for (var id in d) {
+      if (id === 'form') continue;
+      var el = document.getElementById(id);
+      if (el) el.innerHTML = d[id];
+    }
+
+    // Formulaire
+    var f = d['form'];
+    var nl = document.querySelector('label[for="name"]');   if (nl) nl.innerHTML = f.name_lbl;
+    var ni = document.getElementById('name');               if (ni) ni.placeholder = f.name_ph;
+    var oi = document.getElementById('org');                if (oi) oi.placeholder = f.org_ph;
+    var el2 = document.querySelector('label[for="email"]'); if (el2) el2.innerHTML = f.email_lbl;
+    var ei = document.getElementById('email');              if (ei) ei.placeholder = f.email_ph;
+    var sl = document.querySelector('label[for="sujet"]');  if (sl) sl.innerHTML = f.subj_lbl;
+    var mi = document.getElementById('message');            if (mi) mi.placeholder = f.msg_ph;
+    var sb = document.getElementById('sujet');
+    if (sb) { var opts = sb.querySelectorAll('option'); opts.forEach(function(o,i){ if(f.subj_opts[i]) o.innerHTML = f.subj_opts[i]; }); }
+    var btn = document.querySelector('.form-submit');       if (btn) btn.textContent = f.send;
+    var note = document.querySelector('.form-note');        if (note) note.textContent = f.note;
+
+    // Mobile menu liens
+    var mob = document.getElementById('mobile-menu');
+    if (mob) {
+      var lexp = mob.querySelector('a[href="#expertises"]'); if(lexp) lexp.textContent = (lang==='fr'?'Expertises':'Expertise');
+      var lapp = mob.querySelector('a[href="#approche"]');   if(lapp) lapp.textContent = (lang==='fr'?'Approche':'Approach');
+      var lcta = mob.querySelector('a.btn');                 if(lcta) lcta.textContent = (lang==='fr'?'Prendre contact':'Get in touch');
+    }
   }
-  </script>
+</script>
 
 </body>
 </html>
