@@ -824,23 +824,41 @@
     .nav-lang {
       display: flex;
       align-items: center;
-      gap: 5px;
-      margin-left: 24px;
+      gap: 0;
+      margin-left: 48px;
       flex-shrink: 0;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 4px;
+      overflow: hidden;
     }
     .lang-btn {
-      background: none; border: none;
-      color: rgba(255,255,255,0.38);
-      font-size: 11px; font-weight: 500;
+      background: none;
+      border: none;
+      color: rgba(255,255,255,0.45);
+      font-size: 12px;
+      font-weight: 500;
       letter-spacing: 0.1em;
-      cursor: pointer; font-family: var(--sans);
-      padding: 3px 0;
-      transition: color .2s;
+      cursor: pointer;
+      font-family: var(--sans);
+      padding: 5px 12px;
+      transition: background .2s, color .2s;
       text-transform: uppercase;
+      line-height: 1;
     }
-    .lang-btn.active { color: var(--green); }
-    .lang-btn:hover { color: rgba(255,255,255,0.75); }
-    .lang-sep { color: rgba(255,255,255,0.18); font-size: 10px; }
+    .lang-btn.active {
+      background: var(--green);
+      color: #fff;
+    }
+    .lang-btn:not(.active):hover {
+      background: rgba(255,255,255,0.07);
+      color: rgba(255,255,255,0.85);
+    }
+    .lang-sep {
+      width: 1px;
+      height: 14px;
+      background: rgba(255,255,255,0.12);
+      flex-shrink: 0;
+    }
     @media (max-width:768px) { .nav-lang { display: none; } }
   </style>
 </head>
@@ -932,12 +950,12 @@
         <aside>
           <div class="hero-card fade">
             <span class="card-tag" id="t-card-tag">What sets TRUVARA apart</span>
-            <h3>Independent advisory to structure procurement & supply chain transformations.</h3>
-            <p>TRUVARA integrates procurement strategy, operational transformation, artificial intelligence, blockchain and trust governance into a single value proposition.</p>
+            <h3 id="t-card-h3">Independent advisory to structure procurement &amp; supply chain transformations.</h3>
+            <p id="t-card-p">TRUVARA integrates procurement strategy, operational transformation, artificial intelligence, blockchain and trust governance into a single value proposition.</p>
             <div class="bullet-list">
-              <div class="bullet">Engagements with multi-entity and multi-site international groups.</div>
-              <div class="bullet">Executive-level advisory, free of unnecessary technical jargon.</div>
-              <div class="bullet">Decision-oriented approach focused on execution and measurable value.</div>
+              <div class="bullet" id="t-card-b1">Engagements with multi-entity and multi-site international groups.</div>
+              <div class="bullet" id="t-card-b2">Executive-level advisory, free of unnecessary technical jargon.</div>
+              <div class="bullet" id="t-card-b3">Decision-oriented approach focused on execution and measurable value.</div>
             </div>
           </div>
         </aside>
@@ -973,14 +991,14 @@
           <div class="eyebrow" id="t-exp-ey">Expertise</div>
           <h2 id="t-exp-h2">Engagements designed to create measurable value.</h2>
         </div>
-        <p>Every engagement is a clear transformation mandate, designed to produce results visible at executive level.</p>
+        <p id="t-exp-lead">Every engagement is a clear transformation mandate, designed to produce results visible at executive level.</p>
       </div>
       <div class="accent-line"></div>
       <div class="services-grid">
 
         <div class="service-card fade">
-          <span class="service-num">01 · Procurement strategy</span>
-          <h3>Redefining the role of procurement in value creation.</h3>
+          <span class="service-num" id="t-svc01-lbl">01 · Procurement strategy</span>
+          <h3 id="t-svc01-h3">Redefining the role of procurement in value creation.</h3>
           <p id="t-svc01-p">Maturity diagnostic, spend segmentation, priority recalibration, operating model design and transformation roadmap elevated to the right governance level.</p>
           <div class="service-tags">
             <span>Roadmap</span><span>Operating model</span><span>Value capture</span>
@@ -989,26 +1007,26 @@
 
         <div class="service-card fade">
           <span class="service-num">02 · Applied AI</span>
-          <h3>Enhancing decision-making and execution through artificial intelligence.</h3>
-          <p>Artificial intelligence is not an end goal — it is a decision accelerator. TRUVARA identifies where AI creates real operational value and deploys solutions immediately useful to your teams.</p>
+          <h3 id="t-svc02-h3">Enhancing decision-making and execution through artificial intelligence.</h3>
+          <p id="t-svc02-p">Artificial intelligence is not an end goal — it is a decision accelerator. TRUVARA identifies where AI creates real operational value and deploys solutions immediately useful to your teams.</p>
           <div class="service-tags">
             <span>Automation</span><span>Predictive analytics</span><span>Decision support</span>
           </div>
         </div>
 
         <div class="service-card fade">
-          <span class="service-num">03 · Traceability &amp; trust</span>
-          <h3>Deploying trust architectures across the entire value chain.</h3>
-          <p>TRUVARA helps prove origin, secure critical flows and strengthen supplier compliance in regulated, multi-country environments, with or without blockchain.</p>
+          <span class="service-num" id="t-svc03-lbl">03 · Traceability &amp; trust</span>
+          <h3 id="t-svc03-h3">Deploying trust architectures across the entire value chain.</h3>
+          <p id="t-svc03-p">TRUVARA helps prove origin, secure critical flows and strengthen supplier compliance in regulated, multi-country environments, with or without blockchain.</p>
           <div class="service-tags">
             <span>Blockchain</span><span>Traceability</span><span>CSRD · CSDDD</span>
           </div>
         </div>
 
         <div class="service-card fade">
-          <span class="service-num">04 · End-to-end transformation</span>
-          <h3>Moving from strategic ambition to visible execution on the ground.</h3>
-          <p>TRUVARA works at executive level to frame procurement &amp; supply chain transformations, secure key decisions and establish clear performance governance.</p>
+          <span class="service-num" id="t-svc04-lbl">04 · End-to-end transformation</span>
+          <h3 id="t-svc04-h3">Moving from strategic ambition to visible execution on the ground.</h3>
+          <p id="t-svc04-p">TRUVARA works at executive level to frame procurement &amp; supply chain transformations, secure key decisions and establish clear performance governance.</p>
           <div class="service-tags">
             <span>Change</span><span>Program office</span><span>Execution</span>
           </div>
@@ -1032,7 +1050,7 @@
           <div class="eyebrow" id="t-app-ey">Approach</div>
           <h2 id="t-app-h2">A focused, rigorous, <em>calibrated</em> method.</h2>
         </div>
-        <p>Every engagement is tailored, aligned with executive priorities and real operational constraints, following a rigorous work sequence adapted to your context.</p>
+        <p id="t-app-lead">Every engagement is tailored, aligned with executive priorities and real operational constraints, following a rigorous work sequence adapted to your context.</p>
       </div>
       <div class="accent-line"></div>
       <div class="steps-grid">
@@ -1041,7 +1059,7 @@
           <div class="step-num">01</div>
           <div class="step-badge">01</div>
           <h3>Frame</h3>
-          <p>Clarify performance priorities, operational constraints, ambition level and the decisions to bring under control from the first weeks.</p>
+          <p id="t-step1-p">Clarify performance priorities, operational constraints, ambition level and the decisions to bring under control from the first weeks.</p>
           <div class="step-footer">Priorities · governance · value</div>
         </div>
 
@@ -1049,7 +1067,7 @@
           <div class="step-num">02</div>
           <div class="step-badge">02</div>
           <h3>Diagnose</h3>
-          <p>Analyse flows, supplier base, risks, team maturity and data architecture to objectively identify transformation levers.</p>
+          <p id="t-step2-p">Analyse flows, supplier base, risks, team maturity and data architecture to objectively identify transformation levers.</p>
           <div class="step-footer">Risks · data · maturity</div>
         </div>
 
@@ -1057,7 +1075,7 @@
           <div class="step-num">03</div>
           <div class="step-badge">03</div>
           <h3>Design</h3>
-          <p>Define the target model, use cases, governance structure, technology roadmap and expected gains with realistic sequencing.</p>
+          <p id="t-step3-p">Define the target model, use cases, governance structure, technology roadmap and expected gains with realistic sequencing.</p>
           <div class="step-footer">Target model · use cases · roadmap</div>
         </div>
 
@@ -1065,7 +1083,7 @@
           <div class="step-num">04</div>
           <div class="step-badge">04</div>
           <h3>Deploy</h3>
-          <p>Implement, engage teams, secure key decisions, measure value and establish a continuous improvement dynamic.</p>
+          <p id="t-step4-p">Implement, engage teams, secure key decisions, measure value and establish a continuous improvement dynamic.</p>
           <div class="step-footer">Execution · adoption · performance</div>
         </div>
 
@@ -1074,19 +1092,19 @@
       <div class="principles-grid">
         <div class="principle fade">
           <h3>Analytical rigour</h3>
-          <p>Every recommendation is grounded in rigorous analysis of real data and constraints — not generic frameworks.</p>
+          <p id="t-princ1-p">Every recommendation is grounded in rigorous analysis of real data and constraints — not generic frameworks.</p>
         </div>
         <div class="principle fade">
           <h3>Executive language</h3>
-          <p>Deliverables are designed to be understood and presented at executive committee level, without intermediary translation.</p>
+          <p id="t-princ2-p">Deliverables are designed to be understood and presented at executive committee level, without intermediary translation.</p>
         </div>
         <div class="principle fade">
           <h3>Absolute discretion</h3>
-          <p>Confidentiality is a prerequisite. Every engagement is handled with the rigour expected of a strategic partner.</p>
+          <p id="t-princ3-p">Confidentiality is a prerequisite. Every engagement is handled with the rigour expected of a strategic partner.</p>
         </div>
         <div class="principle fade">
           <h3>Résultats mesurables</h3>
-          <p>The ambition of every engagement is clarified from the outset and translated into concrete results for leadership.</p>
+          <p id="t-princ4-p">The ambition of every engagement is clarified from the outset and translated into concrete results for leadership.</p>
         </div>
       </div>
 
@@ -1171,17 +1189,17 @@
           <div class="eyebrow">Contact</div>
           <h2 id="t-contact-h2">Start a strategic conversation.</h2>
         </div>
-        <p>Confidential exchanges — selective approach. TRUVARA works with executives and teams seeking a rigorous strategic partner.</p>
+        <p id="t-contact-hook">Confidential exchanges — selective approach. TRUVARA works with executives and teams seeking a rigorous strategic partner.</p>
       </div>
       <div class="accent-line"></div>
       <div class="contact-grid">
 
         <div class="fade">
-          <p style="font-size:14px; color:var(--muted);">Email address</p>
+          <p id="t-email-lbl" style="font-size:14px; color:var(--muted);">Email address</p>
           <a href="mailto:contact@truvara.io" class="email-link">contact@truvara.io</a>
-          <p style="font-size:15px;">For any collaboration request, exploratory discussion or question about TRUVARA's expertise.</p>
+          <p id="t-email-sub" style="font-size:15px;">For any collaboration request, exploratory discussion or question about TRUVARA's expertise.</p>
           <div class="contact-meta">
-            <p>TRUVARA<br>Paris, France<br>© 2026 — All rights reserved</p>
+            <p>TRUVARA<br>Paris, France<br><span id="t-footer-copy">© 2026 — All rights reserved</span></p>
           </div>
         </div>
 
@@ -1911,6 +1929,36 @@
       't-ins-h3-4':   'Blockchain &amp; traçabilité : sortir du buzzword pour passer à l’architecture.',
       't-ins-p-4':    'Blockchain is not a solution to a vague problem. It is a powerful tool when the use case is well-defined: proof of origin, supplier data integrity, multi-party auditability.',
       't-ins-note':   'The TRUVARA insights library is being built. New content will be published regularly.',
+      't-exp-h2b':    'Engagements designed to create measurable value.',
+      't-exp-lead':   'Every engagement is a clear transformation mandate, designed to produce results visible at executive level.',
+      't-svc01-lbl':  '01 · Procurement strategy',
+      't-svc01-h3':   'Redefining the role of procurement in value creation.',
+      't-svc02-h3':   'Enhancing decision-making and execution through artificial intelligence.',
+      't-svc02-p':    'Artificial intelligence is not an end goal — it is a decision accelerator. TRUVARA identifies where AI creates real operational value and deploys solutions immediately useful to your teams.',
+      't-svc03-lbl':  '03 · Traceability &amp; trust',
+      't-svc03-h3':   'Deploying trust architectures across the entire value chain.',
+      't-svc03-p':    'TRUVARA helps prove origin, secure critical flows and strengthen supplier compliance in regulated, multi-country environments, with or without blockchain.',
+      't-svc04-lbl':  '04 · End-to-end transformation',
+      't-svc04-h3':   'Moving from strategic ambition to visible execution on the ground.',
+      't-svc04-p':    'TRUVARA works at executive level to frame procurement &amp; supply chain transformations, secure key decisions and establish clear performance governance.',
+      't-app-lead':   'Every engagement is tailored, aligned with executive priorities and real operational constraints, following a rigorous work sequence adapted to your context.',
+      't-step1-p':    'Clarify performance priorities, operational constraints, ambition level and the decisions to bring under control from the first weeks.',
+      't-step2-p':    'Analyse flows, supplier base, risks, team maturity and data architecture to objectively identify transformation levers.',
+      't-step3-p':    'Define the target model, use cases, governance structure, technology roadmap and expected gains with realistic sequencing.',
+      't-step4-p':    'Implement, engage teams, secure key decisions, measure value and establish a continuous improvement dynamic.',
+      't-princ1-p':   'Every recommendation is grounded in rigorous analysis of real data and constraints — not generic frameworks.',
+      't-princ2-p':   'Deliverables are designed to be understood and presented at executive committee level, without intermediary translation.',
+      't-princ3-p':   'Confidentiality is a prerequisite. Every engagement is handled with the rigour expected of a strategic partner.',
+      't-princ4-p':   'The ambition of every engagement is clarified from the outset and translated into concrete results for leadership.',
+      't-card-h3':      'Independent advisory to structure procurement &amp; supply chain transformations.',
+      't-card-p':       'TRUVARA integrates procurement strategy, operational transformation, artificial intelligence, blockchain and trust governance into a single value proposition.',
+      't-card-b1':      'Engagements with multi-entity and multi-site international groups.',
+      't-card-b2':      'Executive-level advisory, free of unnecessary technical jargon.',
+      't-card-b3':      'Decision-oriented approach focused on execution and measurable value.',
+      't-contact-hook': 'Confidential exchanges — selective approach. TRUVARA works with executives and teams seeking a rigorous strategic partner.',
+      't-email-lbl':    'Email address',
+      't-email-sub':    'For any collaboration request, exploratory discussion or question about TRUVARA’s expertise.',
+      't-footer-copy':  '© 2026 — All rights reserved',
       't-svc01-p':    'Maturity diagnostic, spend segmentation, priority recalibration, operating model design and transformation roadmap elevated to the right governance level.',
       't-contact-p':  'For any collaboration request, exploratory discussion or question about TRUVARA\'s expertise.',
       't-exp-cta':    'Get in touch',
@@ -1961,6 +2009,36 @@
       't-ins-h3-4':   'Blockchain &amp; traçabilité : sortir du buzzword pour passer à l’architecture.',
       't-ins-p-4':    'La blockchain n’est pas une solution à un problème flou. C’est un outil puissant quand le cas d’usage est bien cadré : preuve d’origine, intégrité des données fournisseurs, auditabilité multi-acteurs.',
       't-ins-note':   'La bibliothèque d’insights TRUVARA est en cours de constitution. De nouveaux contenus seront publiés régulièrement.',
+      't-exp-h2b':    'Des interventions conçues pour créer de la valeur.',
+      't-exp-lead':   'Chaque intervention est un mandat de transformation clair, conçu pour produire des résultats visibles au niveau direction générale.',
+      't-svc01-lbl':  '01 · Stratégie achats',
+      't-svc01-h3':   'Redéfinir le rôle des achats dans la création de valeur.',
+      't-svc02-h3':   'Augmenter la décision et l’exécution par l’intelligence artificielle.',
+      't-svc02-p':    'L’intelligence artificielle n’est pas une finalité, c’est un accélérateur de décision. TRUVARA identifie les cas où l’IA crée une vraie valeur opérationnelle et déploie des solutions immédiatement utiles aux équipes.',
+      't-svc03-lbl':  '03 · Traçabilité &amp; confiance',
+      't-svc03-h3':   'Installer des architectures de confiance sur toute la chaîne de valeur.',
+      't-svc03-p':    'TRUVARA aide à prouver l’origine, sécuriser les flux critiques et renforcer la conformité fournisseurs dans des environnements réglementés et multi-pays, avec ou sans blockchain.',
+      't-svc04-lbl':  '04 · Transformation bout en bout',
+      't-svc04-h3':   'Passer d’une ambition stratégique à une exécution visible sur le terrain.',
+      't-svc04-p':    'TRUVARA intervient au niveau direction pour cadrer les transformations achats &amp; supply chain, sécuriser les arbitrages et installer un pilotage clair de la performance.',
+      't-app-lead':   'Chaque intervention est conçue sur mesure, alignée avec les enjeux de direction générale et les contraintes opérationnelles réelles, selon une séquence de travail rigoureuse adaptée à votre contexte.',
+      't-step1-p':    'Clarifier les priorités de performance, les contraintes opérationnelles, le niveau d’ambition et les décisions à mettre sous contrôle dès les premières semaines.',
+      't-step2-p':    'Lire les flux, la base fournisseurs, les risques, la maturité des équipes et l’architecture de données pour objectiver les leviers de transformation.',
+      't-step3-p':    'Définir le modèle cible, les cas d’usage, l’organisation de pilotage, la trajectoire technologique et les gains attendus avec un séquençement réaliste.',
+      't-step4-p':    'Mettre en œuvre, embarquer les équipes, sécuriser les arbitrages, mesurer la valeur et installer une dynamique d’amélioration continue.',
+      't-princ1-p':   'Chaque recommandation repose sur une lecture rigoureuse des données et des contraintes réelles — pas sur des modèles génériques.',
+      't-princ2-p':   'Les livrables sont conçus pour être compris et portés au niveau d’un comité exécutif, sans traduction intermédiaire.',
+      't-princ3-p':   'La confidentialité est un prérequis. Chaque engagement est traité avec la rigueur attendue d’un partenaire stratégique.',
+      't-princ4-p':   'L’ambition de chaque mission est clarifiée dès le départ et traduite en résultats concrets pour la direction.',
+      't-card-h3':      'Un conseil indépendant pour structurer les transformations achats &amp; supply chain.',
+      't-card-p':       'TRUVARA relie stratégie achats, transformation opérationnelle, intelligence artificielle, blockchain et gouvernance de confiance dans une seule proposition de valeur.',
+      't-card-b1':      'Intervention auprès de groupes internationaux multi-entités et multi-sites.',
+      't-card-b2':      'Lecture direction générale, sans jargon technologique inutile.',
+      't-card-b3':      'Approche orientée décision, exécution et preuves de valeur.',
+      't-contact-hook': 'Échanges confidentiels — approche sélective. TRUVARA intervient auprès de dirigeants et d’équipes qui recherchent un partenaire stratégique rigoureux.',
+      't-email-lbl':    'Adresse email',
+      't-email-sub':    'Pour toute demande de collaboration, échange exploratoire ou question sur les expertises TRUVARA.',
+      't-footer-copy':  '© 2026 — Tous droits réservés',
       't-svc01-p':    'Diagnostic de maturité, segmentation des dépenses, recalibrage des priorités, design du modèle opératoire et feuille de route de transformation portée au bon niveau de gouvernance.',
       't-contact-p':  'Pour toute demande de collaboration, \u00e9change exploratoire ou question sur les expertises TRUVARA.',
       't-exp-cta':    'Prendre contact',
