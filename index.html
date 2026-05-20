@@ -1205,6 +1205,14 @@
 
         <div class="fade">
           <form id="contact-form" onsubmit="truvSend(event)" novalidate>
+
+            <!-- Web3Forms -->
+            <input type="hidden" name="access_key" value="195ef317-da4f-43f4-b8e4-24d97789ac0f">
+            <input type="hidden" name="subject" id="w3f-subject" value="TRUVARA — Contact request">
+            <input type="hidden" name="from_name" value="TRUVARA Website">
+            <input type="hidden" name="redirect" value="false">
+            <input type="checkbox" name="botcheck" style="display:none">
+
             <div class="form-group">
               <label for="name">Full name</label>
               <input type="text" id="name" name="name" placeholder="Your name" required>
@@ -1223,7 +1231,7 @@
                 <option value="">Select a subject</option>
                 <option>Procurement strategy</option>
                 <option>Applied AI</option>
-                <option>Traceability & trust</option>
+                <option>Traceability &amp; trust</option>
                 <option>Transformation</option>
                 <option>Other</option>
               </select>
@@ -1233,7 +1241,8 @@
               <textarea id="message" name="message" placeholder="Briefly describe your context…"></textarea>
             </div>
             <button type="submit" class="form-submit">Send message</button>
-            <p id="form-confirm" style="display:none; color:var(--green); font-size:13px; margin-top:12px; letter-spacing:0.04em;">✓ Message transmis. Réponse sous 48h ouvrées.</p>
+            <p id="form-confirm" style="display:none; color:var(--green); font-size:13px; margin-top:12px; letter-spacing:0.04em;"></p>
+            <p id="form-error" style="display:none; color:#e74c3c; font-size:13px; margin-top:12px;"></p>
             <p class="form-note">Your data is not stored. Response within 48 business hours.</p>
           </form>
         </div>
@@ -1477,26 +1486,63 @@
       });
     });
 
-    // 6. Formulaire de contact — envoi via mailto JS (sans action= HTTP)
+    // 6. Formulaire de contact — envoi via Web3Forms
     function truvSend(e) {
       e.preventDefault();
-      var nom   = document.getElementById('name').value;
-      var org   = document.getElementById('org').value;
-      var email = document.getElementById('email').value;
+
+      var lang  = document.documentElement.lang || 'en';
+      var nom   = document.getElementById('name').value.trim();
+      var email = document.getElementById('email').value.trim();
       var sujet = document.getElementById('sujet').value;
-      var msg   = document.getElementById('message').value;
-      var body  = encodeURIComponent(
-        'Name: ' + nom + '\n' +
-        'Organisation: ' + org + '\n' +
-        'Email: ' + email + '\n' +
-        'Subject: ' + sujet + '\n\n' +
-        msg
-      );
-      var subj = encodeURIComponent('TRUVARA — ' + (sujet || 'Contact request'));
-      window.location.href = 'mailto:contact@truvara.io?subject=' + subj + '&body=' + body;
+
+      if (!nom || !email) return;
+
+      // Mettre à jour le subject Web3Forms dynamiquement
+      var subjEl = document.getElementById('w3f-subject');
+      if (subjEl) subjEl.value = 'TRUVARA — ' + (sujet || (lang === 'fr' ? 'Demande de contact' : 'Contact request'));
+
+      var btn     = document.querySelector('.form-submit');
       var confirm = document.getElementById('form-confirm');
-      if (confirm) confirm.style.display = 'block';
-      document.getElementById('contact-form').reset();
+      var errEl   = document.getElementById('form-error');
+
+      btn.disabled = true;
+      btn.textContent = lang === 'fr' ? 'Envoi en cours…' : 'Sending…';
+      if (confirm) confirm.style.display = 'none';
+      if (errEl)   errEl.style.display   = 'none';
+
+      var form = document.getElementById('contact-form');
+      var formData = new FormData(form);
+
+      fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formData
+      })
+      .then(function(res) { return res.json(); })
+      .then(function(data) {
+        if (data.success) {
+          if (confirm) {
+            confirm.textContent = lang === 'fr'
+              ? '✓ Message envoyé. Réponse sous 48h ouvrées.'
+              : '✓ Message sent. Response within 48 business hours.';
+            confirm.style.display = 'block';
+          }
+          form.reset();
+          btn.textContent = lang === 'fr' ? 'Envoyer le message' : 'Send message';
+          btn.disabled = false;
+        } else {
+          throw new Error(data.message || 'Error');
+        }
+      })
+      .catch(function(err) {
+        if (errEl) {
+          errEl.textContent = lang === 'fr'
+            ? 'Erreur d’envoi. Veuillez réessayer ou écrire à contact@truvara.io'
+            : 'Send error. Please retry or write to contact@truvara.io';
+          errEl.style.display = 'block';
+        }
+        btn.textContent = lang === 'fr' ? 'Envoyer le message' : 'Send message';
+        btn.disabled = false;
+      });
     }
 
   </script>
