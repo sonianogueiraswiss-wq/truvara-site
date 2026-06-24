@@ -1511,11 +1511,24 @@
       if (errEl)   errEl.style.display   = 'none';
 
       var form = document.getElementById('contact-form');
-      var formData = new FormData(form);
+
+      // Construire l objet JSON explicitement
+      var payload = {
+        access_key: '195ef317-da4f-43f4-b8e4-24d97789ac0f',
+        subject: document.getElementById('w3f-subject').value,
+        from_name: 'TRUVARA Website',
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        organisation: document.getElementById('org').value,
+        sujet: document.getElementById('sujet').value,
+        message: document.getElementById('message').value,
+        botcheck: ''
+      };
 
       fetch('https://api.web3forms.com/submit', {
         method: 'POST',
-        body: formData
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(payload)
       })
       .then(function(res) { return res.json(); })
       .then(function(data) {
